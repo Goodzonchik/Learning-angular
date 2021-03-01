@@ -1,0 +1,31 @@
+.nav-list {
+  &-container {
+    display: flex;
+  }
+
+  &-item {
+    list-style-type: none;
+    padding: 0.5em 2em;
+    align-content: center;
+    height: 75px;
+    display: flex;
+    font-size: 1.5em;
+    line-height: 75px;
+
+    :hover {
+      background-color: red;
+      cursor: pointer;
+    }
+  }
+}
+
+.header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  background-color: #eaeaea;
+  border-bottom: 1px solid black;
+  padding: 0 2em;
+  margin: 0 -2em;
+}

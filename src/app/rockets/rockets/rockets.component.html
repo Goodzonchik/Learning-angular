@@ -1,0 +1,15 @@
+<ng-container *ngIf="rockets$ | async; let rockets">
+  <h2>Rockets</h2>
+
+  <div class="tui-row">
+    <div
+      class="tui-col_md-12"
+      *ngFor="let rocket of rockets"
+      class="action"
+      [routerLink]="[rocket.rocket_id]"
+    >
+      <div>rocket №{{ rocket.rocket_id }}</div>
+      <div>rocket name {{ rocket.rocket_name }}</div>
+    </div>
+  </div>
+</ng-container>
