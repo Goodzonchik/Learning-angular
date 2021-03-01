@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { CompanyInfo } from '../../models/company-info';
 import { Observable } from 'rxjs';
-import { DataService } from '@shared/data.service';
-import { BreadcrumbsService } from '@shared/breadcrumbs.service';
+
+import { CompanyInfo } from '@models';
+import { DataService, BreadcrumbsService } from '@shared';
 
 @Component({
   selector: 'company-info',

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { BreadcrumbsService } from '@shared/breadcrumbs.service';
-import { todoAny } from '@utils/todo-any';
+
+import { BreadcrumbsService } from '@shared';
+import { todoAny } from '@utils';
 
 @Component({
   selector: 'app-root',

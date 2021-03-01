@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { DataService } from '@shared/data.service';
-import { BreadcrumbsService } from '@shared/breadcrumbs.service';
-import { Rocket } from 'src/app/models/rocket';
+import { BreadcrumbsService, DataService } from '@shared';
+import { Rocket } from '@models';
 
 @Component({
   selector: 'rockets',

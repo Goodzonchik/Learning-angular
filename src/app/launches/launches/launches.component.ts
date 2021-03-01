@@ -2,9 +2,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { DataService } from '@shared/data.service';
-import { Launch } from 'src/app/models/launch';
-import { BreadcrumbsService } from '@shared/breadcrumbs.service';
+import { Launch } from '@models';
+import { BreadcrumbsService, DataService } from '@shared';
 
 @Component({
   selector: 'launches',

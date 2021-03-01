@@ -1,4 +1,4 @@
-import { todoAny } from '@utils/todo-any';
+import { todoAny } from '@utils';
 
 export interface Launch {
   flight_number: number;

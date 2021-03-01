@@ -4,7 +4,8 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { todoAny } from '@utils/todo-any';
+
+import { todoAny } from '@utils';
 
 @Component({
   selector: 'header',

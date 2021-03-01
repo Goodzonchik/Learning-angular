@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { todoAny } from '@utils/todo-any';
+
 import { BehaviorSubject } from 'rxjs';
+
+import { todoAny } from '@utils';
 
 @Injectable({
   providedIn: 'root',

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { BreadcrumbsService } from '@shared/breadcrumbs.service';
-import { DataService } from '@shared/data.service';
+
 import { Observable } from 'rxjs';
-import { Launch } from 'src/app/models/launch';
+
+import { DataService, BreadcrumbsService } from '@shared';
+import { Launch } from '@models';
 
 @Component({
   selector: 'launch',
