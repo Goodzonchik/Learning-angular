@@ -1,13 +1,15 @@
 <ng-container *ngIf="launches$ | async; let launches">
   <h2>Launches</h2>
 
-  <lazy-loading-list></lazy-loading-list>
-  <tui-action
-    *ngFor="let launche of launches"
+  <div
+    *ngFor="let launch of launches"
     class="action"
-    [routerLink]="[launche.flight_number]"
+    [routerLink]="[launch.flight_number]"
   >
-    <div>flight №{{ launche.flight_number }}</div>
-    <div>mission name {{ launche.mission_name }}</div>
-  </tui-action>
+    <div>flight №{{ launch.flight_number }}</div>
+    <div>mission name {{ launch.mission_name }}</div>
+  </div>
+
+  <button (click)="prev()" [disabled]="page === 0">prevPage</button>
+  <button (click)="next()" [disabled]="page === lastPage">nextPage</button>
 </ng-container>
