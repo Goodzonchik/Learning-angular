@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.0.1",
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
+    "@storybook/angular": "^6.1.21",
     "@taiga-ui/addon-commerce": "^2.6.1",
     "@taiga-ui/cdk": "^2.6.1",
     "@taiga-ui/core": "^2.6.1",

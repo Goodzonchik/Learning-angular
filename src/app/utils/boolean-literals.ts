@@ -1,6 +1,8 @@
 export type BooleanLiteral = 'yesNo' | 'openClose';
 
-export const booleanLiterals = new Map([
+export type Literal = { confirmation: string; denial: string };
+
+export const booleanLiterals = new Map<BooleanLiteral, Literal>([
   ['yesNo', { confirmation: 'yes', denial: 'no' }],
   ['openClose', { confirmation: 'open', denial: 'close' }],
 ]);

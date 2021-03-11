@@ -11,9 +11,15 @@ import { LazyLoadingListComponent } from './lazy-loading-list/lazy-loading-list.
 import { HeaderComponent } from './header/header.component';
 import { SpacexLogoComponent } from './header/spacex-logo/spacex-logo.component';
 import { GalleryComponent } from './gallery/gallery.component';
-import { BooleanLiteralPipe } from './boolean-literal.pipe';
+import { TestComponent } from './test/test.component';
+import { BooleanLiteralModule } from './boolean-literal';
 
-const angularModule = [CommonModule, HttpClientModule, RouterModule];
+const angularModule = [
+  CommonModule,
+  HttpClientModule,
+  RouterModule,
+  BooleanLiteralModule,
+];
 const taigaUi = [
   TuiFormatNumberPipeModule,
   TuiMoneyModule,
@@ -24,11 +30,10 @@ const components = [
   LazyLoadingListComponent,
   HeaderComponent,
   GalleryComponent,
-  BooleanLiteralPipe,
 ];
 
 @NgModule({
-  declarations: [...components, SpacexLogoComponent],
+  declarations: [...components, SpacexLogoComponent, TestComponent],
   imports: [...angularModule, ...taigaUi],
   exports: [...angularModule, ...taigaUi, components],
 })

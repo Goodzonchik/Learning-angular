@@ -11,6 +11,7 @@ import { iconsPathFactory, TUI_ICONS_PATH } from '@taiga-ui/core';
 import { SharedModule } from '@shared';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AppPreloadingStrategy } from '@shared/app-preload-strategy';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
       provide: TUI_ICONS_PATH,
       useValue: iconsPathFactory('assets/taiga-ui/icons/'),
     },
+    AppPreloadingStrategy,
   ],
   bootstrap: [AppComponent],
 })

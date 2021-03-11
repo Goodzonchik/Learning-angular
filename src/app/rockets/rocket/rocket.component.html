@@ -2,7 +2,9 @@
   <h2>Rocket {{ rocket.rocket_name }}</h2>
 
   <div class="tui-row">
-    <div>active: {{ rocket.active | booleanLiteral: "yesNo" }}</div>
+    <div class="row-active">
+      active: {{ rocket.active | booleanLiteral: "yesNo" }}
+    </div>
 
     <div>first flight: {{ rocket.first_flight }}</div>
 
