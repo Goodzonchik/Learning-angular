@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs';
-import { take } from 'rxjs/operators';
-
 import { Rocket } from '@models';
-import { BreadcrumbsService, DataService, ListCacheService } from '@shared';
-import { ListBaseComponent } from '@shared/list-base/list-base.component';
+import {
+  BreadcrumbsService,
+  DataService,
+  ListCacheService,
+  ListBaseComponent,
+} from '@shared';
 
 const pageSize = 5;
-const latestLaunch = 92;
+const latestLaunch = 5;
 
 @Component({
   selector: 'rockets',
@@ -17,17 +18,18 @@ const latestLaunch = 92;
   providers: [ListCacheService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RocketsComponent implements OnInit {
-  rockets$: BehaviorSubject<Rocket[]> = new BehaviorSubject<Rocket[]>(null);
-
-  page = 0;
+export class RocketsComponent
+  extends ListBaseComponent<Rocket>
+  implements OnInit {
   lastPage = Math.ceil(latestLaunch / pageSize);
 
   constructor(
-    private dataService: DataService,
+    dataService: DataService,
     private readonly breadcrumbsService: BreadcrumbsService,
-    private readonly listCacheService: ListCacheService
-  ) {}
+    listCacheService: ListCacheService
+  ) {
+    super('rockets', dataService, listCacheService);
+  }
 
   ngOnInit() {
     this.breadcrumbsService.setBreadcrumbs([
@@ -36,30 +38,5 @@ export class RocketsComponent implements OnInit {
       },
     ]);
     this.getPage(0);
-  }
-
-  next() {
-    this.page++;
-    this.getPage(this.page);
-  }
-
-  prev() {
-    this.page--;
-    this.getPage(this.page);
-  }
-
-  private getPage(page: number): void {
-    const cache = this.listCacheService.getData<Rocket[]>(page);
-    if (cache) {
-      this.rockets$.next(cache);
-      return;
-    }
-    this.dataService
-      .getData<Rocket[]>(`rockets?limit=${pageSize}&offset=${page * pageSize}`)
-      .pipe(take(1))
-      .subscribe((data) => {
-        this.rockets$.next(data);
-        this.listCacheService.setData<Rocket[]>(page, data);
-      });
   }
 }

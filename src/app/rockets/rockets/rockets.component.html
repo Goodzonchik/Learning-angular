@@ -1,4 +1,4 @@
-<ng-container *ngIf="rockets$ | async; let rockets">
+<ng-container *ngIf="items$ | async; let rockets">
   <h2>Rockets</h2>
 
   <div class="tui-row">
@@ -12,4 +12,7 @@
       <div>rocket name {{ rocket.rocket_name }}</div>
     </div>
   </div>
+
+  <button (click)="prev()" [disabled]="page === 0">prevPage</button>
+  <button (click)="next()" [disabled]="page === lastPage">nextPage</button>
 </ng-container>
