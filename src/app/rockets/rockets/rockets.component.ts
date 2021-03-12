@@ -10,7 +10,7 @@ import {
 } from '@shared';
 import { pageSize, pathGen } from '@utils';
 
-const latestLaunch = 5;
+const rocketCount = 4;
 
 @Component({
   selector: 'rockets',
@@ -22,7 +22,7 @@ const latestLaunch = 5;
 export class RocketsComponent
   extends ListBaseComponent<Rocket>
   implements OnInit {
-  lastPage = Math.ceil(latestLaunch / pageSize);
+  lastPage = Math.floor(rocketCount / pageSize);
 
   constructor(
     dataService: DataService,

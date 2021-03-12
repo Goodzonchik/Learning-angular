@@ -1,6 +1,6 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { DataService, ListCacheService } from '@shared';
@@ -11,18 +11,18 @@ const pageSize = 5;
   selector: 'list-base',
   template: ``,
 })
-export class ListBaseComponent<T> {
+export class ListBaseComponent<T> implements OnDestroy {
   items$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>(null);
 
   page = 0;
+
+  private dataSubscription$: Subscription = new Subscription();
 
   constructor(
     @Inject('pathValue') private readonly pathValue: string,
     private dataService: DataService,
     private readonly listCacheService: ListCacheService
-  ) {
-    this.getPage(0);
-  }
+  ) {}
 
   next() {
     this.page++;
@@ -40,14 +40,23 @@ export class ListBaseComponent<T> {
       this.items$.next(cache);
       return;
     }
-    this.dataService
-      .getData<T[]>(
-        `${this.pathValue}?limit=${pageSize}&offset=${page * pageSize}`
-      )
-      .pipe(take(1))
-      .subscribe((data) => {
-        this.items$.next(data);
-        this.listCacheService.setData<T[]>(page, data);
-      });
+    this.dataSubscription$.add(
+      this.dataService
+        .getData<T[]>(
+          `${this.pathValue}?limit=${pageSize}&offset=${page * pageSize}`
+        )
+        .pipe(take(1))
+        .subscribe((data) => {
+          this.items$.next(data);
+          this.listCacheService.setData<T[]>(page, data);
+        })
+    );
+  }
+
+  ngOnDestroy(): void {
+    if (this.dataSubscription$) {
+      this.dataSubscription$.unsubscribe();
+      this.dataSubscription$ = null;
+    }
   }
 }
