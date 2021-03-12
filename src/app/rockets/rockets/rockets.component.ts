@@ -6,9 +6,10 @@ import {
   DataService,
   ListCacheService,
   ListBaseComponent,
+  GetFirstPage,
 } from '@shared';
+import { pageSize, pathGen } from '@utils';
 
-const pageSize = 5;
 const latestLaunch = 5;
 
 @Component({
@@ -31,12 +32,8 @@ export class RocketsComponent
     super('rockets', dataService, listCacheService);
   }
 
+  @GetFirstPage()
   ngOnInit() {
-    this.breadcrumbsService.setBreadcrumbs([
-      {
-        caption: 'Rockets',
-      },
-    ]);
-    this.getPage(0);
+    this.breadcrumbsService.setBreadcrumbs(pathGen('rockets'));
   }
 }

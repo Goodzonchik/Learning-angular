@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 
 import { DataService, BreadcrumbsService } from '@shared';
 import { Launch } from '@models';
+import { pathGen } from '@utils/path-gen';
+
+const launchesPath = '/launches';
 
 @Component({
   selector: 'launch',
@@ -26,14 +29,8 @@ export class LaunchComponent implements OnInit {
     this.launch$ = this.dataService.getData<Launch>(
       `launches/${flight_number}`
     );
-    this.breadcrumbsService.setBreadcrumbs([
-      {
-        caption: 'Launches',
-        routerLink: '/launches',
-      },
-      {
-        caption: `Launche №${flight_number}`,
-      },
-    ]);
+    this.breadcrumbsService.setBreadcrumbs(
+      pathGen('launches', `Launche №${flight_number}`)
+    );
   }
 }

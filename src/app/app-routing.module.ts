@@ -24,6 +24,7 @@ const routes: Routes = [
       import('./rockets/rockets.module').then((m) => m.RocketsModule),
     data: { preload: true },
   },
+  { path: '', pathMatch: 'full', redirectTo: 'company-info' },
 ];
 
 @NgModule({

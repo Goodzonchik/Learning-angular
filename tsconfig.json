@@ -16,12 +16,12 @@
     "module": "es2020",
     "lib": ["es2018", "dom"],
     "paths": {
-      "@shared/*": ["src/app/shared/*"],
       "@shared": ["src/app/shared"],
-      "@utils/*": ["src/app/utils/*"],
+      "@shared/*": ["src/app/shared/*"],
       "@utils": ["src/app/utils"],
-      "@models/*": ["src/app/models/*"],
-      "@models": ["src/app/models"]
+      "@utils/*": ["src/app/utils/*"],
+      "@models": ["src/app/models"],
+      "@models/*": ["src/app/models/*"]
     }
   },
   "angularCompilerOptions": {

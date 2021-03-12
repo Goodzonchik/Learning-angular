@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Rocket } from '@models';
 import { DataService, BreadcrumbsService } from '@shared';
+import { pathGen } from '@utils';
 
 @Component({
   selector: 'rocket',
@@ -24,14 +25,9 @@ export class RocketComponent implements OnInit {
   ngOnInit(): void {
     const rocket_id = this.router.snapshot.params.rocket_id;
     this.rocket$ = this.dataService.getData<Rocket>(`rockets/${rocket_id}`);
-    this.breadcrumbsService.setBreadcrumbs([
-      {
-        caption: 'Rockets',
-        routerLink: '/rockets',
-      },
-      {
-        caption: `Rockets №${rocket_id}`,
-      },
-    ]);
+
+    this.breadcrumbsService.setBreadcrumbs(
+      pathGen('rockets', `Rockets №${rocket_id}`)
+    );
   }
 }

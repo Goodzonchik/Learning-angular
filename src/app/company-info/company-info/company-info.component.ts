@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 import { CompanyInfo } from '@models';
 import { DataService, BreadcrumbsService } from '@shared';
+import { pathGen } from '@utils';
 
 @Component({
   selector: 'company-info',
@@ -20,10 +21,6 @@ export class CompanyInfoComponent {
     private dataService: DataService,
     breadcrumbsService: BreadcrumbsService
   ) {
-    breadcrumbsService.setBreadcrumbs([
-      {
-        caption: 'About',
-      },
-    ]);
+    breadcrumbsService.setBreadcrumbs(pathGen('about'));
   }
 }
