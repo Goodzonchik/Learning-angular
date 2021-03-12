@@ -1,18 +1,22 @@
 <ng-container *ngIf="items$ | async; let rockets">
   <h2>Rockets</h2>
 
-  <div class="tui-row">
+  <div class="list">
     <div
-      class="tui-col_md-12"
+      class="list-item"
       *ngFor="let rocket of rockets"
-      class="action"
       [routerLink]="[rocket.rocket_id]"
     >
-      <div>rocket №{{ rocket.rocket_id }}</div>
-      <div>rocket name {{ rocket.rocket_name }}</div>
+      <div class="list-item-row">rocket №{{ rocket.rocket_id }}</div>
+      <div class="list-item-row">rocket name {{ rocket.rocket_name }}</div>
     </div>
   </div>
 
-  <button (click)="prev()" [disabled]="page === 0">prevPage</button>
-  <button (click)="next()" [disabled]="page === lastPage">nextPage</button>
+  <list-button
+    [page]="page"
+    [firstPage]="0"
+    [lastPage]="lastPage"
+    (next)="next()"
+    (prev)="prev()"
+  ></list-button>
 </ng-container>

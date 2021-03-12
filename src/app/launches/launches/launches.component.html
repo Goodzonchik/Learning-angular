@@ -1,15 +1,22 @@
 <ng-container *ngIf="items$ | async; let launches">
   <h2>Launches</h2>
 
-  <div
-    *ngFor="let launch of launches"
-    class="action"
-    [routerLink]="[launch.flight_number]"
-  >
-    <div>flight №{{ launch.flight_number }}</div>
-    <div>mission name {{ launch.mission_name }}</div>
+  <div class="list">
+    <div
+      *ngFor="let launch of launches"
+      class="list-item"
+      [routerLink]="[launch.flight_number]"
+    >
+      <div class="list-item-row">Flight №{{ launch.flight_number }}</div>
+      <div class="list-item-row">Mission name {{ launch.mission_name }}</div>
+    </div>
   </div>
 
-  <button (click)="prev()" [disabled]="page === 0">prevPage</button>
-  <button (click)="next()" [disabled]="page === lastPage">nextPage</button>
+  <list-button
+    [page]="page"
+    [firstPage]="0"
+    [lastPage]="lastPage"
+    (next)="next()"
+    (prev)="prev()"
+  ></list-button>
 </ng-container>

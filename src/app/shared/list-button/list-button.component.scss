@@ -1,0 +1,14 @@
+.list-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  margin-top: 1em;
+
+  .button {
+    margin-right: 1em;
+
+    &:last-child {
+      margin-right: 0em;
+    }
+  }
+}

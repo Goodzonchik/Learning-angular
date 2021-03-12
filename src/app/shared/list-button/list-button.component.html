@@ -1,0 +1,12 @@
+<div class="list-button-container">
+  <button
+    class="button"
+    (click)="onPrevClick()"
+    [disabled]="page === firstPage"
+  >
+    prevPage
+  </button>
+  <button class="button" (click)="onNextClick()" [disabled]="page === lastPage">
+    nextPage
+  </button>
+</div>

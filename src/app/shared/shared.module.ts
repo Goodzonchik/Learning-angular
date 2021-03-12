@@ -12,6 +12,8 @@ import { SpacexLogoComponent } from './header/spacex-logo/spacex-logo.component'
 import { GalleryComponent } from './gallery/gallery.component';
 import { BooleanLiteralModule } from './boolean-literal';
 import { ListBaseComponent } from './list-base/list-base.component';
+import { ListButtonComponent } from './list-button/list-button.component';
+import { ListButtonDirective } from './list-button/list-button.directive';
 
 const angularModule = [
   CommonModule,
@@ -25,10 +27,16 @@ const taigaUi = [
   TuiActionModule,
   TuiBreadcrumbsModule,
 ];
-const components = [HeaderComponent, GalleryComponent];
+const components = [HeaderComponent, GalleryComponent, ListButtonComponent];
+const directive = [ListButtonDirective];
 
 @NgModule({
-  declarations: [...components, SpacexLogoComponent, ListBaseComponent],
+  declarations: [
+    ...components,
+    ...directive,
+    SpacexLogoComponent,
+    ListBaseComponent,
+  ],
   imports: [...angularModule, ...taigaUi],
   exports: [...angularModule, ...taigaUi, components],
 })
