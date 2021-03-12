@@ -27,6 +27,11 @@
 
   &-image {
     width: calc(100% - 100px);
+    cursor: zoom-in;
+
+    &__fullscreen {
+      cursor: zoom-out;
+    }
   }
 
   &-preview {

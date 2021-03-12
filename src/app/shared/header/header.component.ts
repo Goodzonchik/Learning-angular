@@ -1,11 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { todoAny } from '@utils';
+
+type NavLink = { link: string; title: string };
 
 @Component({
   selector: 'header',
@@ -13,10 +10,12 @@ import { todoAny } from '@utils';
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   @Input() breadcrumbs: todoAny[];
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  links: NavLink[] = [
+    { link: 'company-info', title: 'About SpaceX' },
+    { link: 'launches', title: 'Launches' },
+    { link: 'rockets', title: 'Rockets' },
+  ];
 }

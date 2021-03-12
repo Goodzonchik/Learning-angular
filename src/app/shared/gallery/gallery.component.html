@@ -6,6 +6,7 @@
     <div class="gallery-button" (click)="navigatePrev()">назад</div>
     <img
       class="gallery-image"
+      [ngClass]="{ 'gallery-image__fullscreen': fullscreen }"
       (click)="toggleFullscreen()"
       src="{{ images[activeImage] }}"
     />

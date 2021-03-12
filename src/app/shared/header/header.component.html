@@ -1,11 +1,12 @@
 <nav class="header-container">
-  <spacex-logo></spacex-logo>
-  <ul class="nav-list-container">
-    <li class="nav-list-item">
-      <a [routerLink]="'company-info'">About SpaceX</a>
+  <a [routerLink]="'company-info'"><spacex-logo></spacex-logo></a>
+
+  <ul class="nav-list">
+    <li class="nav-list-item" *ngFor="let link of links">
+      <a class="nav-list-item-link" [routerLink]="link.link">{{
+        link.title
+      }}</a>
     </li>
-    <li class="nav-list-item"><a [routerLink]="'launches'">Launches</a></li>
-    <li class="nav-list-item"><a [routerLink]="'rockets'">Rockets</a></li>
   </ul>
 </nav>
 

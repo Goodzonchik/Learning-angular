@@ -1,20 +1,24 @@
 .nav-list {
-  &-container {
-    display: flex;
-  }
+  display: flex;
 
   &-item {
     list-style-type: none;
-    padding: 0.5em 2em;
-    align-content: center;
-    height: 75px;
-    display: flex;
-    font-size: 1.5em;
-    line-height: 75px;
 
-    :hover {
-      background-color: red;
+    &-link {
+      padding: 0.5em 2em;
+      align-content: center;
+      height: 75px;
+      display: flex;
+      font-size: 1.5em;
+      line-height: 75px;
       cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      color: #696969;
+
+      &:hover {
+        background-color: #dcdcdc;
+      }
     }
   }
 }

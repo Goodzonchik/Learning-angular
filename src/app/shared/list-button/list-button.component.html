@@ -1,4 +1,7 @@
-<div class="list-button-container">
+<div
+  class="list-button-container"
+  *ngIf="page !== firstPage || page !== lastPage"
+>
   <button
     class="button"
     (click)="onPrevClick()"
