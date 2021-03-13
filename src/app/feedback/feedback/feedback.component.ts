@@ -18,7 +18,7 @@ const defaultFormValue = {
   email: '',
   subject: '',
   comment: '',
-  rate: 0,
+  rate: 1,
   subscribe: false,
 };
 
@@ -72,6 +72,7 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
   ngOnInit(): void {
     this.form.patchValue(defaultFormValue);
     this.form.valueChanges.subscribe(() => {
+      console.log(this.form.getRawValue());
       this.hasChanges = !compareObjects(
         this.form.getRawValue(),
         defaultFormValue

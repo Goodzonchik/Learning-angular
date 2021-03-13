@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { TuiFormatNumberPipeModule } from '@taiga-ui/core';
 import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
-import { TuiActionModule, TuiBreadcrumbsModule } from '@taiga-ui/kit';
+import { TuiBreadcrumbsModule } from '@taiga-ui/kit';
 
 import { HeaderComponent } from './header/header.component';
 import { SpacexLogoComponent } from './header/spacex-logo/spacex-logo.component';
@@ -18,6 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FieldErrorComponent } from './field-error/field-error.component';
 import { ErrorsPipe } from './errors.pipe';
 import { ObjectsKeysPipe } from './objects-keys.pipe';
+import { RateComponent } from './rate/rate.component';
 
 const angularModule = [
   CommonModule,
@@ -27,18 +28,15 @@ const angularModule = [
   FormsModule,
   ReactiveFormsModule,
 ];
-const taigaUi = [
-  TuiFormatNumberPipeModule,
-  TuiMoneyModule,
-  TuiActionModule,
-  TuiBreadcrumbsModule,
-];
+const taigaUi = [TuiFormatNumberPipeModule, TuiBreadcrumbsModule];
 const components = [
   HeaderComponent,
   GalleryComponent,
   ListButtonComponent,
   FieldErrorComponent,
+  RateComponent,
 ];
+const pipes = [ErrorsPipe, ObjectsKeysPipe];
 const directive = [ListButtonDirective];
 
 @NgModule({
@@ -47,8 +45,7 @@ const directive = [ListButtonDirective];
     ...directive,
     SpacexLogoComponent,
     ListBaseComponent,
-    ErrorsPipe,
-    ObjectsKeysPipe,
+    ...pipes,
   ],
   imports: [...angularModule, ...taigaUi],
   exports: [...angularModule, ...taigaUi, ...components, ...directive],

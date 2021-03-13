@@ -3,42 +3,30 @@
     <div class="col-6">
       <label class="field-label required">Name</label>
       <input formControlName="name" class="text-field" />
-      <field-error
-        [showExpression]="nameControl.errors"
-        [errors]="nameControl.errors"
-      ></field-error>
+      <field-error [errors]="nameControl.errors"></field-error>
     </div>
     <div class="col-6">
       <label class="field-label required">Last name</label>
       <input formControlName="lastName" class="text-field" />
-      <field-error
-        [showExpression]="lastNameControl.errors"
-        [errors]="lastNameControl.errors"
-      ></field-error>
+      <field-error [errors]="lastNameControl.errors"></field-error>
     </div>
   </div>
   <div class="feedback-row">
     <div class="col-6">
-      <label class="field-label">phone</label>
+      <label class="field-label">Phone</label>
       <input formControlName="phone" class="text-field" />
     </div>
     <div class="col-6">
-      <label class="field-label required">email</label>
+      <label class="field-label required">Email</label>
       <input formControlName="email" class="text-field" />
-      <field-error
-        [showExpression]="emailControl.errors"
-        [errors]="emailControl.errors"
-      ></field-error>
+      <field-error [errors]="emailControl.errors"></field-error>
     </div>
   </div>
   <div class="feedback-row">
     <div class="col-12">
       <label class="field-label required">Subject</label>
       <input formControlName="subject" class="text-field" />
-      <field-error
-        [showExpression]="subjectControl.errors"
-        [errors]="subjectControl.errors"
-      ></field-error>
+      <field-error [errors]="subjectControl.errors"></field-error>
     </div>
   </div>
   <div class="feedback-row">
@@ -48,16 +36,13 @@
         formControlName="comment"
         class="text-field textarea-field"
       ></textarea>
-      <field-error
-        [showExpression]="commentControl.errors"
-        [errors]="commentControl.errors"
-      ></field-error>
+      <field-error [errors]="commentControl.errors"></field-error>
     </div>
   </div>
   <div class="feedback-row">
     <div class="col-12">
       <label class="field-label">Rate us</label>
-      <div>Rate component</div>
+      <rate formControlName="rate"></rate>
     </div>
   </div>
   <div class="feedback-row">

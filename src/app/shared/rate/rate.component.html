@@ -1,0 +1,10 @@
+<div class="rate-wrapper">
+  <div
+    class="rate-item"
+    [ngClass]="{ 'rate-item-active': item === value }"
+    *ngFor="let item of items"
+    (click)="setRate(item)"
+  >
+    {{ item }}
+  </div>
+</div>

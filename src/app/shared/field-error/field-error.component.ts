@@ -17,7 +17,6 @@ import { todoAny } from '@utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldErrorComponent implements OnDestroy {
-  @Input() showExpression: boolean = false;
   @Input() customMessage: string = '';
   @Input() errors: todoAny;
 
