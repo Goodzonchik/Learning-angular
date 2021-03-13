@@ -19,12 +19,4 @@ export class ListButtonComponent {
 
   @Output() next: EventEmitter<void> = new EventEmitter<void>();
   @Output() prev: EventEmitter<void> = new EventEmitter<void>();
-
-  onNextClick() {
-    this.next.emit();
-  }
-
-  onPrevClick() {
-    this.prev.emit();
-  }
 }

@@ -1,15 +1,8 @@
-<div
-  class="list-button-container"
-  *ngIf="page !== firstPage || page !== lastPage"
->
-  <button
-    class="button"
-    (click)="onPrevClick()"
-    [disabled]="page === firstPage"
-  >
-    prevPage
+<div class="button-container" *ngIf="page !== firstPage || page !== lastPage">
+  <button class="button" (click)="prev.emit()" [disabled]="page === firstPage">
+    Prev
   </button>
-  <button class="button" (click)="onNextClick()" [disabled]="page === lastPage">
-    nextPage
+  <button class="button" (click)="next.emit()" [disabled]="page === lastPage">
+    Next
   </button>
 </div>

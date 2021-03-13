@@ -14,12 +14,16 @@ import { BooleanLiteralModule } from './boolean-literal';
 import { ListBaseComponent } from './list-base/list-base.component';
 import { ListButtonComponent } from './list-button/list-button.component';
 import { ListButtonDirective } from './list-button/list-button.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FieldErrorComponent } from './field-error/field-error.component';
 
 const angularModule = [
   CommonModule,
   HttpClientModule,
   RouterModule,
   BooleanLiteralModule,
+  FormsModule,
+  ReactiveFormsModule,
 ];
 const taigaUi = [
   TuiFormatNumberPipeModule,
@@ -27,7 +31,12 @@ const taigaUi = [
   TuiActionModule,
   TuiBreadcrumbsModule,
 ];
-const components = [HeaderComponent, GalleryComponent, ListButtonComponent];
+const components = [
+  HeaderComponent,
+  GalleryComponent,
+  ListButtonComponent,
+  FieldErrorComponent,
+];
 const directive = [ListButtonDirective];
 
 @NgModule({
@@ -38,6 +47,6 @@ const directive = [ListButtonDirective];
     ListBaseComponent,
   ],
   imports: [...angularModule, ...taigaUi],
-  exports: [...angularModule, ...taigaUi, components],
+  exports: [...angularModule, ...taigaUi, ...components, ...directive],
 })
 export class SharedModule {}

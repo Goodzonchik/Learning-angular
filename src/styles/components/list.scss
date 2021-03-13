@@ -1,6 +1,8 @@
 .list {
   width: 100%;
-  padding: 1em 0;
+  /*TODO костыль*/
+  padding-bottom: 1em;
+  margin-top: 1em;
 
   &-item {
     border: 1px solid #dcdcdc;
@@ -12,6 +14,9 @@
 
     &:hover {
       background-color: #f9f9f9;
+      box-shadow: 0 0 2px 2px #e8e8e8;
+      margin-top: -0.25em;
+      margin-bottom: 0.75em;
     }
   }
 

@@ -5,12 +5,30 @@
   border-radius: 0.5em;
   font-size: 1.25em;
 
-  &:hover,
   &:hover {
     background-color: #f9f9f9;
   }
 
+  &:active {
+    background-color: #d6d6d6;
+  }
+
   &:disabled {
     cursor: not-allowed;
+  }
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: left;
+  margin-top: 1em;
+
+  .button {
+    margin-right: 1em;
+
+    &:last-child {
+      margin-right: 0em;
+    }
   }
 }

@@ -24,6 +24,12 @@ const routes: Routes = [
       import('./rockets/rockets.module').then((m) => m.RocketsModule),
     data: { preload: true },
   },
+  {
+    path: 'feedback',
+    loadChildren: () =>
+      import('./feedback/feedback.module').then((m) => m.FeedbackModule),
+    data: { preload: true },
+  },
   { path: '', pathMatch: 'full', redirectTo: 'company-info' },
 ];
 

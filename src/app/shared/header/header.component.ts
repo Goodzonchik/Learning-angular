@@ -17,5 +17,6 @@ export class HeaderComponent {
     { link: 'company-info', title: 'About SpaceX' },
     { link: 'launches', title: 'Launches' },
     { link: 'rockets', title: 'Rockets' },
+    { link: 'feedback', title: 'Feedback' },
   ];
 }

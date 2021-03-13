@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 
 import { DataService, BreadcrumbsService } from '@shared';
 import { Launch } from '@models';
-import { pathGen } from '@utils/path-gen';
+import { pathGen } from '@utils';
 
 const launchesPath = '/launches';
 

@@ -1,0 +1,55 @@
+.feedback-container {
+  width: 800px;
+  margin: 0 auto;
+  font-size: 1.25em;
+}
+
+.feedback-row {
+  margin: 1em 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-6 {
+  width: 50%;
+  padding: 0 1em;
+}
+
+.col-12 {
+  width: 100%;
+  padding: 0 1em;
+}
+
+.field-label {
+  display: block;
+  width: 100%;
+}
+
+.text-field {
+  font-size: 1em;
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid #b1b1b1;
+  border-radius: 1em;
+  box-sizing: border-box;
+}
+
+.textarea-field {
+  font-size: 1em;
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid #b1b1b1;
+  border-radius: 1em;
+  height: 5em;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.required {
+  color: #b1b1b1;
+
+  &::after {
+    color: red;
+    content: "*";
+  }
+}

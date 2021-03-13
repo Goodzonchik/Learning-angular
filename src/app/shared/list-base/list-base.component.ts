@@ -3,7 +3,8 @@ import { Component, Inject, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { DataService, ListCacheService } from '@shared';
+import { DataService } from '../data.service';
+import { ListCacheService } from '../list-cache.service';
 
 const pageSize = 5;
 
