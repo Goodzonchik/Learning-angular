@@ -1,4 +1,6 @@
-export const compareObjects = (a: any, b: any) => {
+import { todoAny } from './todo-any';
+
+export const compareObjects = (a: todoAny, b: todoAny) => {
   if (a === b) return true;
 
   if (typeof a !== 'object' || typeof b != 'object' || a == null || b == null)

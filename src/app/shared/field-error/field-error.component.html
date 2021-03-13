@@ -1,1 +1,6 @@
-<div *ngIf="show" class="error-message">{{ errorMessage }}</div>
+<div *ngIf="(show$ | async) && showExpression" class="error-message">
+  <div *ngIf="customMessage">{{ customMessage }}</div>
+  <ng-container *ngIf="errors">
+    <div *ngFor="let error of errors | objectsKeys">{{ error | errors }}</div>
+  </ng-container>
+</div>

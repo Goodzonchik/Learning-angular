@@ -16,6 +16,8 @@ import { ListButtonComponent } from './list-button/list-button.component';
 import { ListButtonDirective } from './list-button/list-button.directive';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FieldErrorComponent } from './field-error/field-error.component';
+import { ErrorsPipe } from './errors.pipe';
+import { ObjectsKeysPipe } from './objects-keys.pipe';
 
 const angularModule = [
   CommonModule,
@@ -45,6 +47,8 @@ const directive = [ListButtonDirective];
     ...directive,
     SpacexLogoComponent,
     ListBaseComponent,
+    ErrorsPipe,
+    ObjectsKeysPipe,
   ],
   imports: [...angularModule, ...taigaUi],
   exports: [...angularModule, ...taigaUi, ...components, ...directive],

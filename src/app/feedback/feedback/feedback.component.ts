@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 
 import { ComponentCanDeactivate } from '@shared';
+import { FieldErrorService } from '@shared/field-error.service';
 import { compareObjects } from '@utils';
 import { Observable } from 'rxjs';
 
@@ -25,19 +26,22 @@ const defaultFormValue = {
   selector: 'feedback',
   templateUrl: './feedback.component.html',
   styleUrls: ['./feedback.component.scss'],
+  providers: [FieldErrorService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
   form: FormGroup;
   hasChanges: boolean = false;
-  showValidation: boolean = false;
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(
+    formBuilder: FormBuilder,
+    private readonly fieldErrorService: FieldErrorService
+  ) {
     this.form = formBuilder.group({
       name: [null, Validators.required],
       lastName: [null, Validators.required],
       phone: null,
-      email: [null, Validators.required],
+      email: [null, [Validators.required, Validators.email]],
       subject: [null, Validators.required],
       comment: [null, Validators.required],
       rate: null,
@@ -76,12 +80,12 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
   }
 
   submit() {
-    this.showValidation = true;
+    this.fieldErrorService.enableShowError();
   }
 
   reset() {
     this.form.patchValue(defaultFormValue);
-    this.showValidation = false;
+    this.fieldErrorService.disableShowError();
   }
 
   canDeactivate(): boolean | Observable<boolean> {

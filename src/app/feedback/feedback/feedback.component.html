@@ -4,16 +4,16 @@
       <label class="field-label required">Name</label>
       <input formControlName="name" class="text-field" />
       <field-error
-        [show]="showValidation && nameControl.errors"
-        [errorMessage]="'Empty'"
+        [showExpression]="nameControl.errors"
+        [errors]="nameControl.errors"
       ></field-error>
     </div>
     <div class="col-6">
       <label class="field-label required">Last name</label>
       <input formControlName="lastName" class="text-field" />
       <field-error
-        [show]="showValidation && lastNameControl.errors"
-        [errorMessage]="'Empty'"
+        [showExpression]="lastNameControl.errors"
+        [errors]="lastNameControl.errors"
       ></field-error>
     </div>
   </div>
@@ -26,8 +26,8 @@
       <label class="field-label required">email</label>
       <input formControlName="email" class="text-field" />
       <field-error
-        [show]="showValidation && emailControl.errors"
-        [errorMessage]="'Empty'"
+        [showExpression]="emailControl.errors"
+        [errors]="emailControl.errors"
       ></field-error>
     </div>
   </div>
@@ -36,8 +36,8 @@
       <label class="field-label required">Subject</label>
       <input formControlName="subject" class="text-field" />
       <field-error
-        [show]="showValidation && subjectControl.errors"
-        [errorMessage]="'Empty'"
+        [showExpression]="subjectControl.errors"
+        [errors]="subjectControl.errors"
       ></field-error>
     </div>
   </div>
@@ -49,8 +49,8 @@
         class="text-field textarea-field"
       ></textarea>
       <field-error
-        [show]="showValidation && commentControl.errors"
-        [errorMessage]="'Empty'"
+        [showExpression]="commentControl.errors"
+        [errors]="commentControl.errors"
       ></field-error>
     </div>
   </div>
