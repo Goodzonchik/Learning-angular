@@ -1,36 +1,35 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Observable } from 'rxjs';
-
-import { DataService, BreadcrumbsService } from '@shared';
+import { BreadcrumbsService } from '@shared';
 import { Launch } from '@models';
 import { pathGen } from '@utils';
+import { take } from 'rxjs/operators';
 
-const launchesPath = '/launches';
+interface LaunchPageResolver {
+  launch: Launch;
+}
 
 @Component({
   selector: 'launch',
   templateUrl: './launch.component.html',
-  styleUrls: ['./launch.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LaunchComponent implements OnInit {
-  launch$: Observable<Launch> = null;
+  launch: Launch | null = null;
 
   constructor(
-    private readonly dataService: DataService,
     private readonly router: ActivatedRoute,
     private readonly breadcrumbsService: BreadcrumbsService
   ) {}
 
   ngOnInit(): void {
-    const flight_number = this.router.snapshot.params.flight_number;
-    this.launch$ = this.dataService.getData<Launch>(
-      `launches/${flight_number}`
-    );
+    this.router.data.pipe(take(1)).subscribe((response: LaunchPageResolver) => {
+      this.launch = response.launch;
+    });
+
     this.breadcrumbsService.setBreadcrumbs(
-      pathGen('launches', `Launche №${flight_number}`)
+      pathGen('launches', `Launche №${this.launch.flight_number}`)
     );
   }
 }

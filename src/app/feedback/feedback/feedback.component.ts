@@ -6,12 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { ComponentCanDeactivate } from '@shared';
-import { FieldErrorService } from '@shared/field-error.service';
-import { compareObjects } from '@utils';
 import { Observable } from 'rxjs';
+import { isEqual } from 'lodash';
 
-const defaultFormValue = {
+import { ComponentCanDeactivate, FieldErrorService } from '@shared';
+
+const defaultFeedbackValue = {
   name: '',
   lastName: '',
   phone: '',
@@ -21,6 +21,8 @@ const defaultFormValue = {
   rate: 1,
   subscribe: false,
 };
+
+const emptyRequiredFormControl = [null, Validators.required];
 
 @Component({
   selector: 'feedback',
@@ -38,14 +40,14 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
     private readonly fieldErrorService: FieldErrorService
   ) {
     this.form = formBuilder.group({
-      name: [null, Validators.required],
-      lastName: [null, Validators.required],
+      name: emptyRequiredFormControl,
+      lastName: emptyRequiredFormControl,
       phone: null,
       email: [null, [Validators.required, Validators.email]],
-      subject: [null, Validators.required],
-      comment: [null, Validators.required],
+      subject: emptyRequiredFormControl,
+      comment: emptyRequiredFormControl,
       rate: null,
-      subscribe: false,
+      subscribe: null,
     });
   }
 
@@ -70,26 +72,26 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
   }
 
   ngOnInit(): void {
-    this.form.patchValue(defaultFormValue);
+    this.form.patchValue(defaultFeedbackValue);
     this.form.valueChanges.subscribe(() => {
-      console.log(this.form.getRawValue());
-      this.hasChanges = !compareObjects(
-        this.form.getRawValue(),
-        defaultFormValue
-      );
+      this.hasChanges = !isEqual(this.form.getRawValue(), defaultFeedbackValue);
     });
   }
 
   submit() {
     this.fieldErrorService.enableShowError();
+    if (this.form.valid) {
+      const formData = JSON.stringify(this.form.getRawValue(), null, 2);
+      alert(`You sended data is \n\n${formData}`);
+    }
   }
 
   reset() {
-    this.form.patchValue(defaultFormValue);
+    this.form.patchValue(defaultFeedbackValue);
     this.fieldErrorService.disableShowError();
   }
 
-  canDeactivate(): boolean | Observable<boolean> {
+  canDeactivate(): Observable<boolean> | boolean {
     if (this.hasChanges) {
       return confirm(
         'You have unsaved data. Are you sure you want to leave the page?'

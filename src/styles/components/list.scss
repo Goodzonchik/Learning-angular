@@ -5,10 +5,10 @@
   margin-top: 1em;
 
   &-item {
+    @include clickable;
     border: 1px solid #dcdcdc;
     margin: 0.5em 0;
     padding: 0.5em;
-    cursor: pointer;
     border-radius: 0.5em;
     font-size: 1.25em;
 

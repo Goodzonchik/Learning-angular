@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .rate {
   &-wrapper {
     display: flex;
@@ -5,6 +7,8 @@
   }
 
   &-item {
+    @include clickable;
+
     margin-right: 1em;
     width: 2em;
     height: 2em;
@@ -15,7 +19,6 @@
     background-color: #d6d6d6;
     font-weight: bold;
     color: #757575;
-    cursor: pointer;
 
     &:last-child {
       margin-right: 0;

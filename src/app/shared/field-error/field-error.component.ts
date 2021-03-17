@@ -20,7 +20,7 @@ export class FieldErrorComponent implements OnDestroy {
   @Input() customMessage: string = '';
   @Input() errors: todoAny;
 
-  show$: Subject<boolean> = null;
+  show$: Subject<boolean> | null = null;
 
   constructor(private readonly fieldErrorService: FieldErrorService) {
     this.show$ = this.fieldErrorService.getSubject();

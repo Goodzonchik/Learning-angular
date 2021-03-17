@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .nav-list {
   display: flex;
 
@@ -5,19 +7,25 @@
     list-style-type: none;
 
     &-link {
+      @include clickable;
+
       padding: 0.5em 2em;
       align-content: center;
       height: 75px;
       display: flex;
       font-size: 1.5em;
       line-height: 75px;
-      cursor: pointer;
       text-decoration: none;
       font-weight: bold;
       color: #696969;
 
       &:hover {
         background-color: #dcdcdc;
+      }
+
+      &-active{
+        background-color: #dadada;
+        color: #fdfdfd;
       }
     }
   }

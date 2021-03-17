@@ -48,7 +48,7 @@
   <div class="feedback-row">
     <div class="col-12">
       <label class="field-label">Subscrube news</label>
-      <input formControlName="subscribe" type="checkbox" />
+      <checkbox formControlName="subscribe"></checkbox>
     </div>
   </div>
   <div class="feedback-row">
@@ -56,7 +56,11 @@
       <button class="button" (click)="reset()" [disabled]="!hasChanges">
         Reset
       </button>
-      <button class="button" (click)="submit()" [disabled]="!hasChanges">
+      <button
+        class="button button-primary"
+        (click)="submit()"
+        [disabled]="!hasChanges"
+      >
         Send
       </button>
     </div>

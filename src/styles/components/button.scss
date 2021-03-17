@@ -1,7 +1,8 @@
 .button {
+  @include clickable;
+
   padding: 0.5em 1em;
   border: 1px solid #dcdcdc;
-  cursor: pointer;
   border-radius: 0.5em;
   font-size: 1.25em;
 
@@ -32,3 +33,12 @@
     }
   }
 }
+
+.button-primary{
+  background: #c5c5c5;
+
+  &:hover{
+    background:#eaeaea;
+  }
+}
+

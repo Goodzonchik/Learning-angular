@@ -15,7 +15,6 @@ const rocketCount = 4;
 @Component({
   selector: 'rockets',
   templateUrl: './rockets.component.html',
-  styleUrls: ['./rockets.component.scss'],
   providers: [ListCacheService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

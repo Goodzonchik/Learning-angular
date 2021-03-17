@@ -1,0 +1,32 @@
+@import '../../../styles/variables.scss';
+
+.checkbox {
+  @include clickable;
+  border: 1px solid $form-border;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.25em;
+  position: relative;
+
+  &:hover {
+    background-color: #fefefe;
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &-label {
+    margin-left: 1em;
+    font-weight: bold;
+  }
+
+  &-active::after {
+    position: absolute;
+    top: -0.25em;
+    left: 0.15em;
+
+    content: "✓";
+  }
+}

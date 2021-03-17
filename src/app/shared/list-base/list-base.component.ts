@@ -12,12 +12,12 @@ const pageSize = 5;
   selector: 'list-base',
   template: ``,
 })
-export class ListBaseComponent<T> implements OnDestroy {
+export abstract class ListBaseComponent<T> implements OnDestroy {
   items$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>(null);
 
   page = 0;
 
-  private dataSubscription$: Subscription = new Subscription();
+  private dataSubscription$: Subscription | null = new Subscription();
 
   constructor(
     @Inject('pathValue') private readonly pathValue: string,

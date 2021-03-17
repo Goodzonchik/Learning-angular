@@ -15,7 +15,6 @@ const latestLaunch = 92;
 @Component({
   selector: 'launches',
   templateUrl: './launches.component.html',
-  styleUrls: ['./launches.component.scss'],
   providers: [ListCacheService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

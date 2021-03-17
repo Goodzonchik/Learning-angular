@@ -5,5 +5,4 @@ export * from './todo-any';
 export * from './constant';
 export * from './capitalize';
 export * from './path-gen';
-export * from './compare-objects';
 export * from './get-errors';

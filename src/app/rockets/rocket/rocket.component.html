@@ -1,23 +1,21 @@
-<ng-container *ngIf="rocket$ | async; let rocket">
-  <h2>Rocket {{ rocket.rocket_name }}</h2>
+<h2>Rocket {{ rocket.rocket_name }}</h2>
 
-  <div class="tui-row">
-    <div class="row-active">
-      active: {{ rocket.active | booleanLiteral: "yesNo" }}
-    </div>
-
-    <div>first flight: {{ rocket.first_flight }}</div>
-
-    <div>success rate pct: {{ rocket.success_rate_pct }}</div>
-
-    <div>height: {{ rocket.height.meters }} meters</div>
-
-    <div>diameter: {{ rocket.diameter.meters }} meters</div>
-
-    <div>mass: {{ rocket.mass.kg }} kg</div>
-
-    <div>description: {{ rocket.description }}</div>
+<div class="tui-row">
+  <div class="row-active">
+    active: {{ rocket.active | booleanLiteral: "yesNo" }}
   </div>
 
-  <gallery [images]="rocket.flickr_images"></gallery>
-</ng-container>
+  <div>first flight: {{ rocket.first_flight }}</div>
+
+  <div>success rate pct: {{ rocket.success_rate_pct }}</div>
+
+  <div>height: {{ rocket.height.meters }} meters</div>
+
+  <div>diameter: {{ rocket.diameter.meters }} meters</div>
+
+  <div>mass: {{ rocket.mass.kg }} kg</div>
+
+  <div>description: {{ rocket.description }}</div>
+</div>
+
+<gallery [images]="rocket.flickr_images"></gallery>

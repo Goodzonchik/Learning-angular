@@ -13,11 +13,13 @@
     <div class="gallery-button" (click)="navigateNext()">вперед</div>
   </div>
   <div class="gallery-preview">
-    <img
-      class="gallery-preview-image"
+    <div
+      class="gallery-preview-container"
       *ngFor="let image of images; let index = index"
+      [ngClass]="{ 'gallery-preview-container-active': index === activeImage }"
       (click)="selectImage(index)"
-      src="{{ image }}"
-    />
+    >
+      <img class="gallery-preview-image" src="{{ image }}" />
+    </div>
   </div>
 </div>

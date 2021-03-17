@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LaunchComponent } from './launch/launch.component';
+import { LaunchResolver } from './launch/launch.resolver';
 import { LaunchesComponent } from './launches/launches.component';
 
 const routes: Routes = [
@@ -12,6 +13,9 @@ const routes: Routes = [
   {
     path: ':flight_number',
     component: LaunchComponent,
+    resolve: {
+      launch: LaunchResolver,
+    },
   },
 ];
 

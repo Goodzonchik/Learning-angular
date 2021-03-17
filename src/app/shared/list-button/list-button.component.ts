@@ -9,7 +9,6 @@ import {
 @Component({
   selector: 'list-button',
   templateUrl: './list-button.component.html',
-  styleUrls: ['./list-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListButtonComponent {

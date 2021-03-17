@@ -1,0 +1,10 @@
+<div class="checkbox-wrapper">
+  <div
+    class="checkbox"
+    [ngClass]="{ 'checkbox-active': value }"
+    (click)="setValue(!value)"
+  ></div>
+  <span *ngIf="label" class="checkbox-label">
+    {{ label }}
+  </span>
+</div>

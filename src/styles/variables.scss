@@ -1,0 +1,18 @@
+$alert-color:#e40000;
+
+$form-border:  #b1b1b1 ;
+$form-label:  #b1b1b1;
+
+@mixin field {
+  font-size: 1em;
+  width: 100%;
+  padding: 0.5em 1em;
+  border: 1px solid #b1b1b1;
+  border-radius: 1em;
+  box-sizing: border-box;
+  }
+
+
+  @mixin clickable {
+      cursor: pointer;
+  }
