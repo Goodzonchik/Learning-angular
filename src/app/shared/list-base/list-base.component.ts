@@ -4,7 +4,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { DataService } from '../data.service';
-import { ListCacheService } from '../list-cache.service';
+import { ListCacheService } from '../list-cache/list-cache.service';
 
 const pageSize = 5;
 

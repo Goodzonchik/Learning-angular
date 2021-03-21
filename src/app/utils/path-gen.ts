@@ -1,5 +1,10 @@
 import { capitalize } from './capitalize';
 
+export type Breadcrumb = {
+  caption: string;
+  routerLink?: string;
+};
+
 export function pathGen(path: string, secontTitle?: string) {
   if (secontTitle) {
     return [difficultPath(path), simlpePath(secontTitle)];

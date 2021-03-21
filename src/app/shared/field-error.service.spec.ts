@@ -7,7 +7,7 @@ describe('FieldErrorService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(FieldErrorService);
+    service = new FieldErrorService();
   });
 
   it('should be created', () => {

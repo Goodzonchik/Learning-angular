@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 
 import { BreadcrumbsService } from '@shared';
-import { todoAny } from '@utils';
+import { Breadcrumb } from '@utils';
 
 @Component({
   selector: 'app-root',
@@ -17,16 +17,16 @@ import { todoAny } from '@utils';
 })
 export class AppComponent {
   title = 'learning-angular';
-  breadcrumbs: todoAny[] = [];
+  breadcrumbs: Breadcrumb[] = [];
   isLoader: boolean = false;
 
   constructor(
     public readonly breadcrumbsService: BreadcrumbsService,
-    private _router: Router
+    private router: Router
   ) {}
 
   ngOnInit() {
-    this._router.events.subscribe((event: RouterEvent) => {
+    this.router.events.subscribe((event: RouterEvent) => {
       if (event instanceof NavigationStart) {
         this.isLoader = true;
       }

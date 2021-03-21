@@ -9,13 +9,34 @@ import { RocketComponent } from './rocket.component';
 import { BreadcrumbsService } from '@shared/breadcrumbs.service';
 import { Rocket } from '@models';
 import { BooleanLiteralModule } from '@shared/boolean-literal';
+import { ActivatedRoute } from '@angular/router';
+
+const mockRocket: Rocket = {
+  id: 1,
+  active: true,
+  success_rate_pct: 100,
+  first_flight: new Date(),
+  height: {
+    meters: 20,
+  },
+  diameter: {
+    meters: 5,
+  },
+  mass: {
+    kg: 100500,
+  },
+  flickr_images: ['1', '2'],
+  description: 'test description',
+  rocket_id: 'test rocket id',
+  rocket_name: 'big fucking rocket',
+  rocket_type: 'super heavy',
+};
 
 describe('RocketComponent', () => {
   let component: RocketComponent;
   let fixture: ComponentFixture<RocketComponent>;
   let dataService: DataService;
   let spy: jasmine.Spy;
-  let mockRocket: Rocket;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -25,7 +46,16 @@ describe('RocketComponent', () => {
         BooleanLiteralModule,
       ],
       declarations: [RocketComponent],
-      providers: [DataService, BreadcrumbsService],
+      providers: [
+        DataService,
+        BreadcrumbsService,
+        {
+          provide: ActivatedRoute,
+          useClass: class {
+            data = of({ rocket: mockRocket });
+          },
+        },
+      ],
     }).compileComponents();
   });
 
@@ -33,27 +63,6 @@ describe('RocketComponent', () => {
     fixture = TestBed.createComponent(RocketComponent);
     component = fixture.componentInstance;
     dataService = fixture.debugElement.injector.get(DataService);
-
-    mockRocket = {
-      id: 1,
-      active: true,
-      success_rate_pct: 100,
-      first_flight: new Date(),
-      height: {
-        meters: 20,
-      },
-      diameter: {
-        meters: 5,
-      },
-      mass: {
-        kg: 100500,
-      },
-      flickr_images: ['1', '2'],
-      description: 'test description',
-      rocket_id: 'test rocket id',
-      rocket_name: 'big fucking rocket',
-      rocket_type: 'super heavy',
-    };
 
     spy = spyOn(dataService, 'getData').and.returnValue(of(mockRocket));
     fixture.detectChanges();

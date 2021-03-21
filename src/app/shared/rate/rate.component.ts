@@ -6,6 +6,7 @@ import {
   Input,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { initSortedArray } from '@utils';
 
 @Component({
   selector: 'rate',
@@ -29,10 +30,7 @@ export class RateComponent implements ControlValueAccessor {
   constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.items = [];
-    for (let i = 1; i <= this.itemsCount; i++) {
-      this.items.push(i);
-    }
+    this.items = initSortedArray(this.itemsCount);
   }
 
   setRate(value: number) {

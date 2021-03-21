@@ -2,17 +2,15 @@ import { Injectable } from '@angular/core';
 
 import { BehaviorSubject } from 'rxjs';
 
-import { todoAny } from '@utils';
+import { Breadcrumb } from '@utils';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BreadcrumbsService {
-  breadcrumbs = new BehaviorSubject<todoAny>(null);
+  breadcrumbs = new BehaviorSubject<Breadcrumb[]>(null);
 
-  constructor() {}
-
-  setBreadcrumbs(value: todoAny[]) {
+  setBreadcrumbs(value: Breadcrumb[]) {
     this.breadcrumbs.next(value);
   }
 }

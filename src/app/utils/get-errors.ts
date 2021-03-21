@@ -4,4 +4,5 @@ export const errorsMap = new Map([
   ['phone', 'Phone is not valid'],
 ]);
 
-export const getError = (key: string): string | null => errorsMap.get(key);
+export const getError = (key: string): string | null =>
+  errorsMap.has(key) ? errorsMap.get(key) : null;
