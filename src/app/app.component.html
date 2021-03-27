@@ -1,5 +1,5 @@
 <div class="root-container">
-  <header [breadcrumbs]="breadcrumbsService.breadcrumbs | async"></header>
+  <header [breadcrumbs]="breadcrumbsService.breadcrumbs$ | async"></header>
 
   <div class="loader" *ngIf="isLoader">
     <div>

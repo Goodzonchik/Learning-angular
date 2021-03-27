@@ -7,8 +7,8 @@ import {
 
 import { Subject } from 'rxjs';
 
-import { FieldErrorService } from '../field-error.service';
 import { todoAny } from '@utils';
+import { FieldErrorService } from '../field-error.service';
 
 @Component({
   selector: 'field-error',
@@ -23,7 +23,7 @@ export class FieldErrorComponent implements OnDestroy {
   show$: Subject<boolean> | null = null;
 
   constructor(private readonly fieldErrorService: FieldErrorService) {
-    this.show$ = this.fieldErrorService.getSubject();
+    this.show$ = this.fieldErrorService.showError$;
   }
 
   ngOnDestroy() {

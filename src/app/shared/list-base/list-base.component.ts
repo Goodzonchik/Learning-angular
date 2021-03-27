@@ -25,14 +25,12 @@ export abstract class ListBaseComponent<T> implements OnDestroy {
     private readonly listCacheService: ListCacheService
   ) {}
 
-  next() {
-    this.page++;
-    this.getPage(this.page);
+  next(): void {
+    this.getPage(++this.page);
   }
 
-  prev() {
-    this.page--;
-    this.getPage(this.page);
+  prev(): void {
+    this.getPage(--this.page);
   }
 
   getPage(page: number): void {

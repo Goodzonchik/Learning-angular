@@ -1,0 +1,30 @@
+@import "../../../styles/variables.scss";
+
+.breadcrumbs-container {
+  display: flex;
+  margin: 1em 0;
+}
+
+.breadcrumb {
+  margin-right: 1em;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &-separator {
+    :after {
+      content: "-";
+      margin-left: 1em;
+    }
+  }
+
+  &-nolink {
+    cursor: default;
+    color: $form-label;
+  }
+
+  &-link {
+    text-decoration: none;
+  }
+}

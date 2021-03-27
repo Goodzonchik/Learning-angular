@@ -41,7 +41,7 @@ export class GalleryComponent {
     this.activeImage = index;
   }
 
-  toggleFullscreen() {
+  toggleFullscreen(): void {
     this.fullscreen = !this.fullscreen;
   }
 }

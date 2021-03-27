@@ -6,4 +6,4 @@ export * from './list-cache/list-cache.service';
 export * from './list-base/list-base.component';
 export * from './list-base/get-first-page';
 export * from './has-change.guard';
-export * from './field-error.service';
+export * from './error';

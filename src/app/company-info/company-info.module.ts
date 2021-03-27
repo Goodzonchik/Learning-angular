@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { TuiMoneyModule } from '@taiga-ui/addon-commerce';
-
 import { SharedModule } from '@shared';
 import { CompanyInfoComponent } from './company-info/company-info.component';
 import { CompanyInfoRoutingModule } from './company-info-routing.module';
@@ -10,7 +8,7 @@ import { CompanyInfoResolver } from './company-info/company-info.resolver';
 
 @NgModule({
   declarations: [CompanyInfoComponent, HeadquartersPipe],
-  imports: [SharedModule, CompanyInfoRoutingModule, TuiMoneyModule],
+  imports: [SharedModule, CompanyInfoRoutingModule],
   providers: [CompanyInfoResolver],
 })
 export class CompanyInfoModule {}

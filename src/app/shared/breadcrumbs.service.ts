@@ -8,9 +8,9 @@ import { Breadcrumb } from '@utils';
   providedIn: 'root',
 })
 export class BreadcrumbsService {
-  breadcrumbs = new BehaviorSubject<Breadcrumb[]>(null);
+  breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>(null);
 
   setBreadcrumbs(value: Breadcrumb[]) {
-    this.breadcrumbs.next(value);
+    this.breadcrumbs$.next(value);
   }
 }

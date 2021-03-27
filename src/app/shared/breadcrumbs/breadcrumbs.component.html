@@ -1,0 +1,23 @@
+<div class="breadcrumbs-container">
+  <div
+    *ngFor="
+      let breadcrumb of breadcrumbsService.breadcrumbs$ | async;
+      let last = last
+    "
+    class="breadcrumb"
+    [ngClass]="{ 'breadcrumb-separator': !last }"
+  >
+    <a
+      *ngIf="breadcrumb.routerLink; else withoutLink"
+      class="breadcrumb-link"
+      [routerLink]="[breadcrumb.routerLink]"
+      >{{ breadcrumb.caption }}</a
+    >
+
+    <ng-template #withoutLink
+      ><span class="breadcrumb-nolink">{{
+        breadcrumb.caption
+      }}</span></ng-template
+    >
+  </div>
+</div>

@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { getError } from '../utils/get-errors';
+import { getError } from '@utils';
 
 @Pipe({
   name: 'errors',

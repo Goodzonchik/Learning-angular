@@ -9,7 +9,11 @@ import {
 import { Observable } from 'rxjs';
 import { isEqual } from 'lodash';
 
-import { ComponentCanDeactivate, FieldErrorService } from '@shared';
+import {
+  BreadcrumbsService,
+  ComponentCanDeactivate,
+  FieldErrorService,
+} from '@shared';
 
 const defaultFeedbackValue = {
   name: '',
@@ -21,8 +25,6 @@ const defaultFeedbackValue = {
   rate: 1,
   subscribe: false,
 };
-
-const emptyRequiredFormControl = [null, Validators.required];
 
 @Component({
   selector: 'feedback',
@@ -37,15 +39,16 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
 
   constructor(
     formBuilder: FormBuilder,
-    private readonly fieldErrorService: FieldErrorService
+    private readonly fieldErrorService: FieldErrorService,
+    private readonly breadcrumbsService: BreadcrumbsService
   ) {
     this.form = formBuilder.group({
-      name: emptyRequiredFormControl,
-      lastName: emptyRequiredFormControl,
+      name: [null, Validators.required],
+      lastName: [null, Validators.required],
       phone: null,
       email: [null, [Validators.required, Validators.email]],
-      subject: emptyRequiredFormControl,
-      comment: emptyRequiredFormControl,
+      subject: [null, Validators.required],
+      comment: [null, Validators.required],
       rate: null,
       subscribe: null,
     });
@@ -76,9 +79,15 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
     this.form.valueChanges.subscribe(() => {
       this.hasChanges = !isEqual(this.form.getRawValue(), defaultFeedbackValue);
     });
+
+    this.breadcrumbsService.setBreadcrumbs([
+      {
+        caption: 'Feedback',
+      },
+    ]);
   }
 
-  submit() {
+  submit(): void {
     this.fieldErrorService.enableShowError();
     if (this.form.valid) {
       const formData = JSON.stringify(this.form.getRawValue(), null, 2);
@@ -86,7 +95,7 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
     }
   }
 
-  reset() {
+  reset(): void {
     this.form.patchValue(defaultFeedbackValue);
     this.fieldErrorService.disableShowError();
   }
