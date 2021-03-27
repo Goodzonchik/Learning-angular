@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { Launch } from '@models';
+import { Launch } from '@types';
 import {
   BreadcrumbsService,
   DataService,

@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 import { getHeadquart } from '@utils';
-import { Headquarters } from '@models';
+import { Headquarters } from '@types';
 
 @Pipe({
   name: 'headquarters',

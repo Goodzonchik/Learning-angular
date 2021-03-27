@@ -3,7 +3,7 @@ import { Resolve } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { CompanyInfo } from '@models';
+import { CompanyInfo } from '@types';
 import { DataService } from '@shared';
 
 @Injectable()

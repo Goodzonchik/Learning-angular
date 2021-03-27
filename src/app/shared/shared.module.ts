@@ -15,6 +15,7 @@ import { CheckboxComponent } from './checkbox/checkbox.component';
 import { LoaderComponent } from './loader/loader.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { NumberFormatPipe } from './number-format.pipe';
+import { HeadquartersPipe } from './headquarters/headquarters.pipe';
 
 const angularModule = [
   CommonModule,
@@ -33,17 +34,13 @@ const components = [
   LoaderComponent,
   BreadcrumbsComponent,
 ];
+const pipes = [HeadquartersPipe, NumberFormatPipe];
 const localComponents = [SpacexLogoComponent];
 const directive = [ListButtonDirective];
 
 @NgModule({
-  declarations: [
-    ...components,
-    ...directive,
-    ...localComponents,
-    NumberFormatPipe,
-  ],
+  declarations: [...components, ...directive, ...localComponents, ...pipes],
   imports: [...angularModule],
-  exports: [...angularModule, ...components, ...directive, NumberFormatPipe],
+  exports: [...angularModule, ...components, ...directive, ...pipes],
 })
 export class SharedModule {}

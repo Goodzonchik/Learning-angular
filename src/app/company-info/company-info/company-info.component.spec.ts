@@ -3,10 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 
 import { of } from 'rxjs';
 
-import { CompanyInfo } from '@models';
+import { CompanyInfo } from 'src/app/types';
 import { CompanyInfoComponent } from './company-info.component';
-import { TuiFormatNumberPipe } from '@taiga-ui/core';
-import { HeadquartersPipe } from './headquarters/headquarters.pipe';
+import { HeadquartersPipe } from '../../shared/headquarters/headquarters.pipe';
 
 const mockData: CompanyInfo = {
   name: 'SpaceX',
@@ -33,11 +32,7 @@ describe('CompanyInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        CompanyInfoComponent,
-        TuiFormatNumberPipe,
-        HeadquartersPipe,
-      ],
+      declarations: [CompanyInfoComponent, HeadquartersPipe],
       providers: [
         {
           provide: ActivatedRoute,

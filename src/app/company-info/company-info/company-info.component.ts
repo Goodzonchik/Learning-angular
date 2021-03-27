@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
-import { CompanyInfo } from '@models';
+import { take } from 'rxjs/operators';
+
+import { CompanyInfo } from '@types';
 import { BreadcrumbsService } from '@shared';
 import { pathGen } from '@utils';
-import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
 
 interface CompanyInfoPageResolver {
   companyInfo: CompanyInfo;

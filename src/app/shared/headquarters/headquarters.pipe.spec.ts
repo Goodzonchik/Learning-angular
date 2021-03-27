@@ -1,6 +1,6 @@
 import { HeadquartersPipe } from './headquarters.pipe';
 
-import { Headquarters } from '@models';
+import { Headquarters } from '@types';
 
 describe('HeadquartersPipe', () => {
   const pipe = new HeadquartersPipe();

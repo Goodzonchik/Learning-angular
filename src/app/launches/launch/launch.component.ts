@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { BreadcrumbsService } from '@shared';
-import { Launch } from '@models';
-import { pathGen } from '@utils';
 import { take } from 'rxjs/operators';
+
+import { BreadcrumbsService } from '@shared';
+import { Launch } from '@types';
+import { pathGen } from '@utils';
 
 interface LaunchPageResolver {
   launch: Launch;

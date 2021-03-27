@@ -1,15 +1,14 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
 
 import { of } from 'rxjs';
 
 import { DataService } from '@shared/data.service';
 import { RocketComponent } from './rocket.component';
-import { BreadcrumbsService } from '@shared/breadcrumbs.service';
-import { Rocket } from '@models';
-import { BooleanLiteralModule } from '@shared/boolean-literal';
-import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbsService, BooleanLiteralModule } from '@shared';
+import { Rocket } from '@types';
 
 const mockRocket: Rocket = {
   id: 1,

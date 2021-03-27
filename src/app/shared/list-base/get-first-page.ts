@@ -1,5 +1,3 @@
-import { todoAny } from '@utils';
-
 export function GetFirstPage() {
   return (
     target: Object,
@@ -7,8 +5,8 @@ export function GetFirstPage() {
     descriptor: TypedPropertyDescriptor<Function>
   ) => {
     const method = descriptor.value;
-    descriptor.value = function (...args: todoAny[]) {
-      const result = method.apply(this, args);
+    descriptor.value = function () {
+      const result = method.apply(this);
       this.getPage(0);
       return result;
     };

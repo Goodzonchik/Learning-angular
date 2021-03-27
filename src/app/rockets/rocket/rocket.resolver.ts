@@ -3,7 +3,7 @@ import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 
 import { Observable } from 'rxjs';
 
-import { Rocket } from '@models';
+import { Rocket } from '@types';
 import { DataService } from '@shared';
 
 @Injectable()

@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Rocket } from '@models';
+import { take } from 'rxjs/operators';
+
+import { Rocket } from '@types';
 import { BreadcrumbsService } from '@shared';
 import { pathGen } from '@utils';
-import { take } from 'rxjs/operators';
 
 interface RocketPageResolver {
   rocket: Rocket;

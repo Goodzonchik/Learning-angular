@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
-import { Rocket } from '@models';
+import { Rocket } from '@types';
 import {
   BreadcrumbsService,
   DataService,
