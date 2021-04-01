@@ -6,6 +6,7 @@ import { of } from 'rxjs';
 import { CompanyInfo } from 'src/app/types';
 import { CompanyInfoComponent } from './company-info.component';
 import { HeadquartersPipe } from '../../shared/headquarters/headquarters.pipe';
+import { NumberFormatPipe } from '@shared/number-format.pipe';
 
 const mockData: CompanyInfo = {
   name: 'SpaceX',
@@ -32,7 +33,7 @@ describe('CompanyInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CompanyInfoComponent, HeadquartersPipe],
+      declarations: [CompanyInfoComponent, HeadquartersPipe, NumberFormatPipe],
       providers: [
         {
           provide: ActivatedRoute,

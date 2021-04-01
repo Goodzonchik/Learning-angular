@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 
 import { Breadcrumb } from '@utils';
 
@@ -8,7 +8,7 @@ import { Breadcrumb } from '@utils';
   providedIn: 'root',
 })
 export class BreadcrumbsService {
-  breadcrumbs$ = new BehaviorSubject<Breadcrumb[]>(null);
+  breadcrumbs$: Subject<Breadcrumb[]> = new Subject<Breadcrumb[]>();
 
   setBreadcrumbs(value: Breadcrumb[]) {
     this.breadcrumbs$.next(value);

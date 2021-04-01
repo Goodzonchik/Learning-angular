@@ -7,6 +7,8 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+import { emptyFunction } from '@types';
+
 @Component({
   selector: 'checkbox',
   templateUrl: './checkbox.component.html',
@@ -24,6 +26,9 @@ export class CheckboxComponent implements ControlValueAccessor {
   @Input() label: string = '';
 
   value: boolean = false;
+
+  private onTouched = emptyFunction;
+  private onChange = emptyFunction;
 
   constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
 
@@ -45,7 +50,4 @@ export class CheckboxComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-
-  private onChange = (value: any) => {};
-  private onTouched = () => {};
 }

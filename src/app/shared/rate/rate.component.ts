@@ -6,6 +6,8 @@ import {
   Input,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+import { emptyFunction } from '@types';
 import { initSortedArray } from '@utils';
 
 @Component({
@@ -26,6 +28,9 @@ export class RateComponent implements ControlValueAccessor {
 
   value: number;
   items: number[] = [];
+
+  private onTouched = emptyFunction;
+  private onChange = emptyFunction;
 
   constructor(private readonly changeDetectorRef: ChangeDetectorRef) {}
 
@@ -51,7 +56,4 @@ export class RateComponent implements ControlValueAccessor {
   registerOnTouched(fn: any): void {
     this.onTouched = fn;
   }
-
-  private onChange = (value: any) => {};
-  private onTouched = () => {};
 }

@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { DataService } from '../data.service';
@@ -13,7 +13,7 @@ const pageSize = 5;
   template: ``,
 })
 export abstract class ListBaseComponent<T> implements OnDestroy {
-  items$: BehaviorSubject<T[]> = new BehaviorSubject<T[]>(null);
+  items$: Subject<T[]> = new Subject<T[]>();
 
   page = 0;
 

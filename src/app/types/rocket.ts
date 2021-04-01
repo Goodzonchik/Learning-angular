@@ -2,7 +2,7 @@ export interface Rocket {
   id: number;
   active: boolean;
   success_rate_pct: number;
-  first_flight: Date;
+  first_flight: string;
   height: {
     meters: number;
   };
@@ -17,4 +17,5 @@ export interface Rocket {
   rocket_id: string;
   rocket_name: string;
   rocket_type: string;
+  images: string[];
 }

@@ -5,16 +5,16 @@ import { ActivatedRoute } from '@angular/router';
 
 import { of } from 'rxjs';
 
-import { DataService } from '@shared/data.service';
 import { RocketComponent } from './rocket.component';
-import { BreadcrumbsService, BooleanLiteralModule } from '@shared';
+import { BreadcrumbsService, BooleanLiteralPipe, DataService } from '@shared';
 import { Rocket } from '@types';
+import { getBooleanLiterals } from '@utils';
 
 const mockRocket: Rocket = {
   id: 1,
   active: true,
   success_rate_pct: 100,
-  first_flight: new Date(),
+  first_flight: '2020-01-03',
   height: {
     meters: 20,
   },
@@ -29,6 +29,7 @@ const mockRocket: Rocket = {
   rocket_id: 'test rocket id',
   rocket_name: 'big fucking rocket',
   rocket_type: 'super heavy',
+  images: [],
 };
 
 describe('RocketComponent', () => {
@@ -39,12 +40,8 @@ describe('RocketComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        HttpClientTestingModule,
-        BooleanLiteralModule,
-      ],
-      declarations: [RocketComponent],
+      imports: [RouterTestingModule, HttpClientTestingModule],
+      declarations: [RocketComponent, BooleanLiteralPipe],
       providers: [
         DataService,
         BreadcrumbsService,
@@ -80,6 +77,29 @@ describe('RocketComponent', () => {
 
   it('should render active value with pipe', () => {
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.row-active').textContent).toContain('yes');
+    const tempalteValues = {
+      active: getTextContent(compiled, 'active'),
+      first_flight: getTextContent(compiled, 'first_flight'),
+      success_rate_pct: getTextContent(compiled, 'success_rate_pct'),
+      height: getTextContent(compiled, 'height'),
+      diameter: getTextContent(compiled, 'diameter'),
+      mass: getTextContent(compiled, 'mass'),
+      description: getTextContent(compiled, 'description'),
+    };
+
+    const mockRocketValues = {
+      active: getBooleanLiterals(mockRocket.active, 'yesNo'),
+      first_flight: mockRocket.first_flight.toString(),
+      success_rate_pct: mockRocket.success_rate_pct.toString(),
+      height: mockRocket.height.meters.toString(),
+      diameter: mockRocket.diameter.meters.toString(),
+      mass: mockRocket.mass.kg.toString(),
+      description: mockRocket.description,
+    };
+    fixture.detectChanges();
+    expect(tempalteValues).toEqual(mockRocketValues);
   });
 });
+
+const getTextContent = (compiled: any, querySelector: string): string =>
+  compiled.querySelector(`[data-testid="${querySelector}"]`).textContent;
