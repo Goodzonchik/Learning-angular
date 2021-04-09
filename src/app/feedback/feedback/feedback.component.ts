@@ -1,19 +1,24 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
+  AsyncValidatorFn,
   FormBuilder,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { isEqual } from 'lodash';
 
 import {
   BreadcrumbsService,
   ComponentCanDeactivate,
   FieldErrorService,
+  SelectModel,
 } from '@shared';
+import { delay } from 'rxjs/operators';
+import { Currency } from '@utils/number-format';
 
 const defaultFeedbackValue = {
   name: '',
@@ -37,6 +42,12 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
   form: FormGroup;
   hasChanges: boolean = false;
 
+  subjects: SelectModel[] = [
+    { id: 1, value: 'Report a bug' },
+    { id: 2, value: 'Offer cooperation' },
+    { id: 3, value: 'Other' },
+  ];
+
   constructor(
     formBuilder: FormBuilder,
     private readonly fieldErrorService: FieldErrorService,
@@ -45,7 +56,7 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
     this.form = formBuilder.group({
       name: [null, Validators.required],
       lastName: [null, Validators.required],
-      phone: null,
+      phone: [null, this.createValidator()],
       email: [null, [Validators.required, Validators.email]],
       subject: [null, Validators.required],
       comment: [null, Validators.required],
@@ -74,6 +85,10 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
     return this.form.get('comment');
   }
 
+  get phoneControl(): AbstractControl {
+    return this.form.get('phone');
+  }
+
   ngOnInit(): void {
     this.form.patchValue(defaultFeedbackValue);
     this.form.valueChanges.subscribe(() => {
@@ -92,6 +107,8 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
     if (this.form.valid) {
       const formData = JSON.stringify(this.form.getRawValue(), null, 2);
       alert(`You sended data is \n\n${formData}`);
+    } else {
+      console.log(this.phoneControl);
     }
   }
 
@@ -107,5 +124,13 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
       );
     }
     return true;
+  }
+
+  createValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors> => {
+      return of(
+        control.value?.length < 11 ? { invalidAsync: true } : null
+      ).pipe(delay(2000));
+    };
   }
 }

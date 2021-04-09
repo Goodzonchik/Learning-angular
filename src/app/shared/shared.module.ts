@@ -16,6 +16,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { NumberFormatPipe } from './number-format.pipe';
 import { HeadquartersPipe } from './headquarters/headquarters.pipe';
+import { SelectComponent } from './select/select.component';
 
 const angularModule = [
   CommonModule,
@@ -33,6 +34,7 @@ const components = [
   CheckboxComponent,
   LoaderComponent,
   BreadcrumbsComponent,
+  SelectComponent,
 ];
 const pipes = [HeadquartersPipe, NumberFormatPipe];
 const localComponents = [SpacexLogoComponent];

@@ -15,6 +15,8 @@
     <div class="col-6">
       <label class="field-label">Phone</label>
       <input formControlName="phone" class="text-field" />
+      {{ phoneControl.errors | json }}
+      <field-error [errors]="phoneControl.errors"></field-error>
     </div>
     <div class="col-6">
       <label class="field-label required">Email</label>
@@ -25,7 +27,10 @@
   <div class="feedback-row">
     <div class="col-12">
       <label class="field-label required">Subject</label>
-      <input formControlName="subject" class="text-field" />
+      <space-select
+        [items]="subjects"
+        formControlName="subject"
+      ></space-select>
       <field-error [errors]="subjectControl.errors"></field-error>
     </div>
   </div>

@@ -1,0 +1,24 @@
+<div class="select">
+  <input
+    class="select_search"
+    [(ngModel)]="searchString"
+    (ngModelChange)="search()"
+    (focus)="onFocus()"
+    [disabled]="disabled"
+  />
+  <button class="select_clear" *ngIf="value && !disabled" (click)="clear()">
+    &#x2715;
+  </button>
+  <ul *ngIf="isOpen" class="select_item-list">
+    <li
+      class="select_item"
+      *ngFor="let item of filteredItems"
+      (click)="select(item)"
+    >
+      {{ item.value }}
+    </li>
+    <li *ngIf="filteredItems.length === 0" class="select_not-found">
+      {{ notFoundMessage }}
+    </li>
+  </ul>
+</div>

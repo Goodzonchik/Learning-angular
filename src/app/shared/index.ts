@@ -8,3 +8,4 @@ export * from './list-base/get-first-page';
 export * from './has-change.guard';
 export * from './error';
 export * from './boolean-literal';
+export * from './select/select.component';

@@ -7,3 +7,4 @@ export * from './capitalize';
 export * from './path-gen';
 export * from './get-errors';
 export * from './init-sorted-array';
+export * from './check-string-include';
