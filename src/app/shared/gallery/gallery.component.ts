@@ -16,8 +16,6 @@ export class GalleryComponent {
   activeImage: number = 0;
   fullscreen: boolean = false;
 
-  constructor() {}
-
   navigateNext(): void {
     if (this.activeImage + 1 < this.images.length && this.images.length > 0) {
       this.activeImage++;
