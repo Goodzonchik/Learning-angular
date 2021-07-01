@@ -2,25 +2,30 @@
   <div class="feedback-row">
     <div class="col-6">
       <label class="field-label required">Name</label>
-      <input formControlName="name" class="text-field" />
+      <input
+        formControlName="name"
+        class="text-field"
+        tabindex="0"
+        #firstControl
+      />
       <field-error [errors]="nameControl.errors"></field-error>
     </div>
     <div class="col-6">
       <label class="field-label required">Last name</label>
-      <input formControlName="lastName" class="text-field" />
+      <input formControlName="lastName" class="text-field" tabindex="0" />
       <field-error [errors]="lastNameControl.errors"></field-error>
     </div>
   </div>
   <div class="feedback-row">
     <div class="col-6">
       <label class="field-label">Phone</label>
-      <input formControlName="phone" class="text-field" />
+      <input formControlName="phone" class="text-field" tabindex="0" />
       {{ phoneControl.errors | json }}
       <field-error [errors]="phoneControl.errors"></field-error>
     </div>
     <div class="col-6">
       <label class="field-label required">Email</label>
-      <input formControlName="email" class="text-field" />
+      <input formControlName="email" class="text-field" tabindex="0" />
       <field-error [errors]="emailControl.errors"></field-error>
     </div>
   </div>
@@ -30,6 +35,7 @@
       <space-select
         [items]="subjects"
         formControlName="subject"
+        tabindex="0"
       ></space-select>
       <field-error [errors]="subjectControl.errors"></field-error>
     </div>
@@ -40,6 +46,7 @@
       <textarea
         formControlName="comment"
         class="text-field textarea-field"
+        tabindex="0"
       ></textarea>
       <field-error [errors]="commentControl.errors"></field-error>
     </div>
@@ -47,24 +54,30 @@
   <div class="feedback-row">
     <div class="col-12">
       <label class="field-label">Rate us</label>
-      <rate formControlName="rate"></rate>
+      <rate formControlName="rate" tabindex="0"></rate>
     </div>
   </div>
   <div class="feedback-row">
     <div class="col-12">
       <label class="field-label">Subscrube news</label>
-      <checkbox formControlName="subscribe"></checkbox>
+      <checkbox formControlName="subscribe" tabindex="0"></checkbox>
     </div>
   </div>
   <div class="feedback-row">
     <div class="button-container">
-      <button class="button" (click)="reset()" [disabled]="!hasChanges">
+      <button
+        class="button"
+        (click)="reset()"
+        [disabled]="!hasChanges"
+        tabindex="0"
+      >
         Reset
       </button>
       <button
         class="button button-primary"
         (click)="submit()"
         [disabled]="!hasChanges"
+        tabindex="0"
       >
         Send
       </button>

@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 import { BreadcrumbsService } from '@shared';
 import { Launch } from '@types';
 import { pathGen } from '@utils';
+import { Observable } from 'rxjs';
 
 interface LaunchPageResolver {
   launch: Launch;
@@ -17,7 +18,7 @@ interface LaunchPageResolver {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LaunchComponent implements OnInit {
-  launch: Launch | null = null;
+  launch$: Observable<Launch>;
 
   constructor(
     private readonly router: ActivatedRoute,
@@ -25,12 +26,14 @@ export class LaunchComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.router.data.pipe(take(1)).subscribe((response: LaunchPageResolver) => {
-      this.launch = response.launch;
-    });
-
-    this.breadcrumbsService.setBreadcrumbs(
-      pathGen('launches', `Launche №${this.launch.flight_number}`)
+    this.launch$ = this.router.data.pipe(
+      take(1),
+      map(({ launch }: LaunchPageResolver) => launch),
+      tap(({flight_number}: Launch) => {
+        this.breadcrumbsService.setBreadcrumbs(
+          pathGen('launches', `Launche №${flight_number}`)
+        );
+      })
     );
   }
 }

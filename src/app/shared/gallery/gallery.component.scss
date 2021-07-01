@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import "../../../styles/variables.scss";
 
 .gallery {
   width: 100%;
@@ -16,7 +16,12 @@
       height: 100vh;
       top: 0;
       left: 0;
-      background-color: #505050;   
+      background-color: #505050;
+      align-items: center;
+
+      .gallery-button {
+        height: 100%;
+      }
     }
   }
 
@@ -24,6 +29,10 @@
     @include clickable;
     background-color: #00000000;
     width: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
       background-color: #00000061;
@@ -54,19 +63,18 @@
     }
 
     &-image_active {
-      background-color: red;
+      background-color: #ababab;
     }
   }
 }
 
-.gallery-preview-container{
+.gallery-preview-container {
   padding: 10px;
-  background-color: green;
+  background-color: #ececec;
   margin: 0 5px;
-
 }
 
-.gallery-preview-container-active{
+.gallery-preview-container-active {
   padding: 10px;
-  background-color: red;
+  background-color: #ababab;
 }

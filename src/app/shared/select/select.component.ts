@@ -7,6 +7,7 @@ import {
   HostListener,
   Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -32,7 +33,9 @@ export type SelectModel = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent implements OnInit, ControlValueAccessor {
-  @Input() items: SelectModel[] = [];
+  @ViewChild('selectInput') selectInput: ElementRef;
+
+  @Input() items: readonly SelectModel[] = [];
   @Input() notFoundMessage: string = 'Not found elements';
 
   filteredItems: SelectModel[] = [];
@@ -46,14 +49,16 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private readonly elementRef: ElementRef
+    private readonly elementRef: ElementRef<HTMLDivElement>
   ) {}
 
   ngOnInit(): void {
-    this.filteredItems = this.items;
+    this.filteredItems = [...this.items];
   }
 
+  @HostListener('focus')
   onFocus(): void {
+    this.selectInput.nativeElement.focus();
     this.isOpen = true;
     this.search();
   }
@@ -64,8 +69,13 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   }
 
   @HostListener('document:click', ['$event'])
+  @HostListener('blur', ['event'])
   clickout(event: Event) {
-    if (!this.elementRef.nativeElement.contains(event.target)) {
+    if (
+      !event ||
+      (event?.target instanceof Element &&
+        !this.elementRef.nativeElement.contains(event?.target))
+    ) {
       this.onBlur();
     }
   }
@@ -87,7 +97,7 @@ export class SelectComponent implements OnInit, ControlValueAccessor {
   clear() {
     this.value = null;
     this.searchString = '';
-    this.filteredItems = this.items;
+    this.filteredItems = [...this.items];
     this.onChange(this.value);
     this.onTouched();
   }

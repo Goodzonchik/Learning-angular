@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Launch } from '@types';
 import { DataService } from '@shared';
+import { launchRoute } from '@utils';
 
 @Injectable()
 export class LaunchResolver implements Resolve<Launch> {
@@ -12,7 +13,7 @@ export class LaunchResolver implements Resolve<Launch> {
 
   resolve(route: ActivatedRouteSnapshot): Observable<Launch> {
     return this.dataService.getData<Launch>(
-      `launches/${route.paramMap.get('flight_number')}`
+      launchRoute(route.paramMap.get('flight_number'))
     );
   }
 }

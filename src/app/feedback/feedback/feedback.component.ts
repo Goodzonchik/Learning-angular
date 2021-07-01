@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   AbstractControl,
   AsyncValidatorFn,
@@ -18,7 +25,6 @@ import {
   SelectModel,
 } from '@shared';
 import { delay } from 'rxjs/operators';
-import { Currency } from '@utils/number-format';
 
 const defaultFeedbackValue = {
   name: '',
@@ -31,6 +37,12 @@ const defaultFeedbackValue = {
   subscribe: false,
 };
 
+const feedbackSubject: ReadonlyArray<SelectModel> = [
+  { id: 1, value: 'Report a bug' },
+  { id: 2, value: 'Offer cooperation' },
+  { id: 3, value: 'Other' },
+];
+
 @Component({
   selector: 'feedback',
   templateUrl: './feedback.component.html',
@@ -38,15 +50,13 @@ const defaultFeedbackValue = {
   providers: [FieldErrorService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
+export class FeedbackComponent
+  implements OnInit, AfterViewInit, ComponentCanDeactivate {
+  @ViewChild('firstControl') firstControl: ElementRef;
+
   form: FormGroup;
   hasChanges: boolean = false;
-
-  subjects: SelectModel[] = [
-    { id: 1, value: 'Report a bug' },
-    { id: 2, value: 'Offer cooperation' },
-    { id: 3, value: 'Other' },
-  ];
+  subjects: ReadonlyArray<SelectModel> = feedbackSubject;
 
   constructor(
     formBuilder: FormBuilder,
@@ -100,6 +110,10 @@ export class FeedbackComponent implements OnInit, ComponentCanDeactivate {
         caption: 'Feedback',
       },
     ]);
+  }
+
+  ngAfterViewInit() {
+    this.firstControl.nativeElement.focus();
   }
 
   submit(): void {

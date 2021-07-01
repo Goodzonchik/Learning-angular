@@ -1,39 +1,41 @@
-<h2>Rocket {{ rocket.rocket_name }}</h2>
-
-<div>
-  <div>
-    active:
-    <span data-testid="active">{{
-      rocket.active | booleanLiteral: "yesNo"
-    }}</span>
-  </div>
+<ng-container *ngIf="rocket$ | async; let rocket">
+  <h2>Rocket {{ rocket.rocket_name }}</h2>
 
   <div>
-    first flight:
-    <span data-testid="first_flight">{{ rocket.first_flight }}</span>
+    <div>
+      active:
+      <span data-testid="active">{{
+        rocket.active | booleanLiteral: "yesNo"
+      }}</span>
+    </div>
+
+    <div>
+      first flight:
+      <span data-testid="first_flight">{{ rocket.first_flight }}</span>
+    </div>
+
+    <div>
+      success rate pct:
+      <span data-testid="success_rate_pct">{{ rocket.success_rate_pct }}</span>
+    </div>
+
+    <div>
+      height: <span data-testid="height">{{ rocket.height.meters }}</span> meters
+    </div>
+
+    <div>
+      diameter:
+      <span data-testid="diameter">{{ rocket.diameter.meters }}</span> meters
+    </div>
+
+    <div>
+      mass: <span data-testid="mass">{{ rocket.mass.kg }}</span> kg
+    </div>
+
+    <div>
+      description: <span data-testid="description">{{ rocket.description }}</span>
+    </div>
   </div>
 
-  <div>
-    success rate pct:
-    <span data-testid="success_rate_pct">{{ rocket.success_rate_pct }}</span>
-  </div>
-
-  <div>
-    height: <span data-testid="height">{{ rocket.height.meters }}</span> meters
-  </div>
-
-  <div>
-    diameter:
-    <span data-testid="diameter">{{ rocket.diameter.meters }}</span> meters
-  </div>
-
-  <div>
-    mass: <span data-testid="mass">{{ rocket.mass.kg }}</span> kg
-  </div>
-
-  <div>
-    description: <span data-testid="description">{{ rocket.description }}</span>
-  </div>
-</div>
-
-<gallery [images]="rocket.flickr_images"></gallery>
+  <gallery class="gallery-wrapper" [images]="rocket.flickr_images"></gallery>
+</ng-container>

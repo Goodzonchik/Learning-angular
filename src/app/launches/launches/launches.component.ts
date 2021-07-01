@@ -21,7 +21,9 @@ const latestLaunch = 92;
 export class LaunchesComponent
   extends ListBaseComponent<Launch>
   implements OnInit {
+
   lastPage = Math.ceil(latestLaunch / pageSize);
+  
   constructor(
     dataService: DataService,
     private readonly breadcrumbsService: BreadcrumbsService,

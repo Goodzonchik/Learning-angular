@@ -5,6 +5,7 @@
     (ngModelChange)="search()"
     (focus)="onFocus()"
     [disabled]="disabled"
+    #selectInput
   />
   <button class="select_clear" *ngIf="value && !disabled" (click)="clear()">
     &#x2715;

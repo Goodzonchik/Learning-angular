@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 import { Rocket } from '@types';
 import { BreadcrumbsService } from '@shared';
 import { pathGen } from '@utils';
+import { Observable } from 'rxjs';
 
 interface RocketPageResolver {
   rocket: Rocket;
@@ -14,18 +15,23 @@ interface RocketPageResolver {
 @Component({
   selector: 'rocket',
   templateUrl: './rocket.component.html',
+  styleUrls: ['./rocket.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RocketComponent {
-  rocket: Rocket | null = null;
+export class RocketComponent implements OnInit{
+  rocket$: Observable<Rocket>;
+  
+  constructor(private router: ActivatedRoute, private breadcrumbsService: BreadcrumbsService) {}
 
-  constructor(router: ActivatedRoute, breadcrumbsService: BreadcrumbsService) {
-    router.data.pipe(take(1)).subscribe((response: RocketPageResolver) => {
-      this.rocket = response.rocket;
-    });
-
-    breadcrumbsService.setBreadcrumbs(
-      pathGen('rockets', `Rockets №${this.rocket.rocket_id}`)
+  ngOnInit(): void {
+    this.rocket$ = this.router.data.pipe(
+      take(1),
+      map(({ rocket }: RocketPageResolver) => rocket),
+      tap(({rocket_id}: Rocket) => {
+        this.breadcrumbsService.setBreadcrumbs(
+          pathGen('rockets', `Rockets №${rocket_id}`)
+        );
+      })
     );
   }
 }

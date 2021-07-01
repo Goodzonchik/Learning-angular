@@ -1,14 +1,16 @@
-<h2>Launche №{{ launch.flight_number }}</h2>
+<ng-container *ngIf="launch$ | async; let launch">
+  <h2>Launche №{{ launch.flight_number }}</h2>
 
-<div class="container">
-  <h3>Mission name: {{ launch.mission_name }}</h3>
-  <div>Upcoming: {{ launch.upcoming }}</div>
-  <div>Launch year: {{ launch.launch_year }}</div>
+  <div class="container">
+    <h3>Mission name: {{ launch.mission_name }}</h3>
+    <div>Upcoming: {{ launch.upcoming }}</div>
+    <div>Launch year: {{ launch.launch_year }}</div>
 
-  <div>
-    <h4>Rocket</h4>
-    <div>Rocket_name: {{ launch.rocket.rocket_name }}</div>
+    <div>
+      <h4>Rocket</h4>
+      <div>Rocket_name: {{ launch.rocket.rocket_name }}</div>
+    </div>
   </div>
-</div>
 
-<div>Crew: {{ launch.crew | json }}</div>
+  <div>Crew: {{ launch.crew | json }}</div>
+</ng-container>

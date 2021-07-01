@@ -51,10 +51,6 @@ describe('CompanyInfoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
   it('should render title of CompanyInfo', () => {
     const compiled = fixture.nativeElement;
     expect(compiled.querySelector('h2').textContent).toContain(mockData.name);

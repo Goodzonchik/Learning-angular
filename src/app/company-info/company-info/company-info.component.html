@@ -1,61 +1,10 @@
 <ng-container *ngIf="companyInfo">
   <h2>{{ companyInfo.name }}</h2>
   <div class="container">
-    <div class="container-row">
-      <div class="row-label">founder:</div>
-      <div class="row-data">{{ companyInfo.founder }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">founded:</div>
-      <div class="row-data">{{ companyInfo.founded }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">employees:</div>
-      <div class="row-data">{{ companyInfo.employees | numberFormat }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">vehicles:</div>
-      <div class="row-data">{{ companyInfo.vehicles }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">ceo:</div>
-      <div class="row-data">{{ companyInfo.ceo }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">cto:</div>
-      <div class="row-data">{{ companyInfo.cto }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">coo:</div>
-      <div class="row-data">{{ companyInfo.coo }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">cto propulsion:</div>
-      <div class="row-data">{{ companyInfo.cto_propulsion }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">valuation:</div>
-      <div class="row-data">
-        {{ companyInfo.valuation | numberFormat: "USD" }}
-      </div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">headquarters:</div>
-      <div class="row-data">{{ companyInfo.headquarters | headquarters }}</div>
-    </div>
-
-    <div class="container-row">
-      <div class="row-label">summary:</div>
-      <div class="row-data">{{ companyInfo.summary }}</div>
-    </div>
+    <data-row
+      *ngFor="let item of viewData"
+      [title]="item.title"
+      [value]="item.value"
+    ></data-row>
   </div>
 </ng-container>

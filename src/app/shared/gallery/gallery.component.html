@@ -3,14 +3,14 @@
     class="gallery-view"
     [ngClass]="{ 'gallery-view__fullscreen': fullscreen }"
   >
-    <div class="gallery-button" (click)="navigatePrev()">назад</div>
+    <div class="gallery-button" (click)="navigatePrev()">Back</div>
     <img
       class="gallery-image"
       [ngClass]="{ 'gallery-image__fullscreen': fullscreen }"
       (click)="toggleFullscreen()"
       src="{{ images[activeImage] }}"
     />
-    <div class="gallery-button" (click)="navigateNext()">вперед</div>
+    <div class="gallery-button" (click)="navigateNext()">Next</div>
   </div>
   <div class="gallery-preview">
     <div
