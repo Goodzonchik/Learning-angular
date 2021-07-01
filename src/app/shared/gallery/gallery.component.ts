@@ -1,6 +1,5 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   Input,
 } from '@angular/core';
@@ -17,7 +16,7 @@ export class GalleryComponent {
   activeImage: number = 0;
   fullscreen: boolean = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {}
+  constructor() {}
 
   navigateNext(): void {
     if (this.activeImage + 1 < this.images.length && this.images.length > 0) {
@@ -25,7 +24,6 @@ export class GalleryComponent {
     } else {
       this.activeImage = 0;
     }
-    this.changeDetectorRef.detectChanges();
   }
 
   navigatePrev(): void {
@@ -34,7 +32,6 @@ export class GalleryComponent {
     } else {
       this.activeImage--;
     }
-    this.changeDetectorRef.detectChanges();
   }
 
   selectImage(index: number): void {
