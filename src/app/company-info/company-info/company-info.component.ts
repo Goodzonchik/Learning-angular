@@ -5,8 +5,7 @@ import { take } from 'rxjs/operators';
 
 import { CompanyInfo, DataRow } from '@types';
 import { BreadcrumbsService } from '@shared';
-import { getHeadquart, pathGen } from '@utils';
-import { numberFormat } from '@utils/number-format';
+import { getHeadquart, pathGen, numberFormat } from '@utils';
 
 interface CompanyInfoPageResolver {
   companyInfo: CompanyInfo;
@@ -19,36 +18,36 @@ interface CompanyInfoPageResolver {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompanyInfoComponent {
-  companyInfo: CompanyInfo | null = null;
+  companyName: string = '';
   viewData: DataRow[] = [];
 
   constructor(router: ActivatedRoute, breadcrumbsService: BreadcrumbsService) {
-    router.data.pipe(take(1)).subscribe((response: CompanyInfoPageResolver) => {
-      this.companyInfo = response.companyInfo;
-      this.genViewData();
+    router.data.pipe(take(1)).subscribe(({companyInfo}: CompanyInfoPageResolver) => {
+      this.companyName = companyInfo.name;
+      this.genViewData(companyInfo);
     });
     breadcrumbsService.setBreadcrumbs(pathGen('about'));
   }
 
-  private genViewData() {
+  private genViewData(companyInfo: CompanyInfo) {
     this.viewData = [
-      { title: 'founder', value: this.companyInfo.founder },
-      { title: 'founded', value: this.companyInfo.founded },
-      { title: 'employees', value: numberFormat(this.companyInfo.employees) },
-      { title: 'vehicles', value: this.companyInfo.vehicles },
-      { title: 'ceo', value: this.companyInfo.ceo },
-      { title: 'cto', value: this.companyInfo.cto },
-      { title: 'coo', value: this.companyInfo.coo },
-      { title: 'cto propulsion', value: this.companyInfo.cto_propulsion },
+      { title: 'founder', value: companyInfo.founder },
+      { title: 'founded', value: companyInfo.founded },
+      { title: 'employees', value: numberFormat(companyInfo.employees) },
+      { title: 'vehicles', value: companyInfo.vehicles },
+      { title: 'ceo', value: companyInfo.ceo },
+      { title: 'cto', value: companyInfo.cto },
+      { title: 'coo', value: companyInfo.coo },
+      { title: 'cto propulsion', value: companyInfo.cto_propulsion },
       {
         title: 'valuation',
-        value: numberFormat(this.companyInfo.valuation, 'USD'),
+        value: numberFormat(companyInfo.valuation, 'USD'),
       },
       {
         title: 'headquarters',
-        value: getHeadquart(this.companyInfo.headquarters),
+        value: getHeadquart(companyInfo.headquarters),
       },
-      { title: 'summary', value: this.companyInfo.summary },
+      { title: 'summary', value: companyInfo.summary },
     ];
   }
 }
