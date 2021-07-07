@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { take } from 'rxjs/operators';
 
-import { CompanyInfo } from '@types';
+import { CompanyInfo, DataRow } from '@types';
 import { BreadcrumbsService } from '@shared';
 import { getHeadquart, pathGen } from '@utils';
 import { numberFormat } from '@utils/number-format';
@@ -11,12 +11,6 @@ import { numberFormat } from '@utils/number-format';
 interface CompanyInfoPageResolver {
   companyInfo: CompanyInfo;
 }
-
-// TODO перенести в types
-export type DataRow = {
-  title: string;
-  value: string | number;
-};
 
 @Component({
   selector: 'company-info',

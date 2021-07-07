@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
+import { DataRow } from '@types';
+
 @Component({
   selector: 'data-row',
   templateUrl: './data-row.component.html',
@@ -7,7 +9,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DataRowComponent {
-  // TODO заменить на один объект, отрефакторить
-  @Input() title: string;
-  @Input() value: string | number;
+  @Input() data: DataRow
 }

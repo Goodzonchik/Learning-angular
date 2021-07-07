@@ -3,8 +3,7 @@
   <div class="container">
     <data-row
       *ngFor="let item of viewData"
-      [title]="item.title"
-      [value]="item.value"
+      [data]="item"
     ></data-row>
   </div>
 </ng-container>
