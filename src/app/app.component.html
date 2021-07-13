@@ -1,11 +1,13 @@
 <div class="root-container">
   <header [breadcrumbs]="breadcrumbsService.breadcrumbs$ | async"></header>
-
+<!--
   <div class="loader" *ngIf="isLoader">
     <div>
       <loader></loader>
     </div>
   </div>
-
-  <router-outlet></router-outlet>
+-->
+  <div [@routeAnimations]="prepareRoute(outlet)" style="position: relative">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
 </div>

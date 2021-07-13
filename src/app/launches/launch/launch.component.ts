@@ -15,6 +15,7 @@ interface LaunchPageResolver {
 @Component({
   selector: 'launch',
   templateUrl: './launch.component.html',
+  styleUrls: ['./launch.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LaunchComponent implements OnInit {

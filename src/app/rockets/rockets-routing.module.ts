@@ -9,6 +9,7 @@ const routes: Routes = [
   {
     path: '',
     component: RocketsComponent,
+    data: { animation: 'rockets'}
   },
   {
     path: ':rocket_id',
@@ -16,6 +17,7 @@ const routes: Routes = [
     resolve: {
       rocket: RocketResolver,
     },
+    data: { animation: 'rocket'}
   },
 ];
 

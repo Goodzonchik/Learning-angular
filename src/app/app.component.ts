@@ -4,15 +4,18 @@ import {
   NavigationStart,
   Router,
   RouterEvent,
+  RouterOutlet,
 } from '@angular/router';
 
 import { BreadcrumbsService } from '@shared';
 import { Breadcrumb } from '@utils';
+import { slideInAnimation } from './animations/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [slideInAnimation]
 })
 export class AppComponent {
   title = 'learning-angular';
@@ -33,5 +36,9 @@ export class AppComponent {
         this.isLoader = false;
       }
     });
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
   }
 }
