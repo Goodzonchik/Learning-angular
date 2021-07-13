@@ -9,13 +9,13 @@ import {
 
 import { BreadcrumbsService } from '@shared';
 import { Breadcrumb } from '@utils';
-import { slideInAnimation } from './animations/animations';
+import { routerAnimation } from '@animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [slideInAnimation]
+  animations: [routerAnimation]
 })
 export class AppComponent {
   title = 'learning-angular';

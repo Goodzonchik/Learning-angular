@@ -6,6 +6,7 @@
       class="list-item"
       *ngFor="let rocket of rockets"
       [routerLink]="[rocket.rocket_id]"
+      @listAnimation
     >
       <div class="list-item-row">rocket №{{ rocket.rocket_id }}</div>
       <div class="list-item-row">rocket name {{ rocket.rocket_name }}</div>

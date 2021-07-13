@@ -9,6 +9,7 @@ import {
   GetFirstPage,
 } from '@shared';
 import { pageSize, pathGen } from '@utils';
+import { listAnimation } from '@animations';
 
 const latestLaunch = 92;
 
@@ -18,6 +19,7 @@ const latestLaunch = 92;
   styleUrls: ['./launches.component.scss'],
   providers: [ListCacheService],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations:[listAnimation]
 })
 export class LaunchesComponent
   extends ListBaseComponent<Launch>

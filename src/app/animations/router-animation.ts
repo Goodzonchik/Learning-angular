@@ -1,6 +1,6 @@
 import { animate, group, query, style, transition, trigger } from '@angular/animations';
 
-export const slideInAnimation =
+export const routerAnimation =
   trigger('routeAnimations', [
       transition('companyInfo => *', slide('left')),
       transition('* => companyInfo', slide('right')),

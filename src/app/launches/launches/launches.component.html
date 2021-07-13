@@ -6,6 +6,7 @@
       *ngFor="let launch of launches"
       class="list-item"
       [routerLink]="[launch.flight_number]"
+      @listAnimation
     >
       <div class="list-item-row">Flight №{{ launch.flight_number }}</div>
       <div class="list-item-row">Mission name {{ launch.mission_name }}</div>

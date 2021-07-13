@@ -9,6 +9,7 @@ import {
   GetFirstPage,
 } from '@shared';
 import { pageSize, pathGen } from '@utils';
+import { listAnimation } from '@animations';
 
 const rocketCount = 4;
 
@@ -17,6 +18,7 @@ const rocketCount = 4;
   templateUrl: './rockets.component.html',
   providers: [ListCacheService],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [listAnimation]
 })
 export class RocketsComponent
   extends ListBaseComponent<Rocket>

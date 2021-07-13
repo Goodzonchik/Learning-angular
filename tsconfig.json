@@ -21,7 +21,9 @@
       "@utils": ["src/app/utils"],
       "@utils/*": ["src/app/utils/*"],
       "@types": ["src/app/types"],
-      "@types/*": ["src/app/types/*"]
+      "@types/*": ["src/app/types/*"],
+      "@animations": ["src/app/animations"],
+      "@animations/*": ["src/app/animations/*"]
     }
   },
   "angularCompilerOptions": {
