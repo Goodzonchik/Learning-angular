@@ -17,6 +17,7 @@ interface RocketPageResolver {
   templateUrl: './rocket.component.html',
   styleUrls: ['./rocket.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  
 })
 export class RocketComponent implements OnInit{
   rocket$: Observable<Rocket>;
